@@ -1,0 +1,19 @@
+= WoWFailure Project -- What has to be Done?! =
+
+1) Fix the Registration Page
+2) Recheck the missing Functions from the Account Management
+3) Make a Vote Panel     <-- =Intergrated= -->
+4) Make a Donation Panel <-- =Intergrated= -->
+5) I need to think better, to find missing Functions :P
+
+# --------------------------------------------------------------
+# |CMS:                                   |    WOWFailureCMS   |
+# |Original:                              |http://eu.battle.net|
+# --------------------------------------------------------------
+# |Database version:                             |    0.0.1    |
+# |Release Date:                                 | 2010-05-17  |
+# |Latest Update:                                | 2011-10-10  |
+# ----------------------------TEAM------------------------------
+# |Members: Apocalipsyz, FailZorD, arnauec, CarlosX,dissaor021,|
+# |hondacrx, Kitiara, Krill156, Lilcrazy, Roberto Roeschmann.  |
+# --------------------------------------------------------------
