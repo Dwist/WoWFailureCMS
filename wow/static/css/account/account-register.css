@@ -1,0 +1,65 @@
+/*default styles overwritten*/
+html,
+.page{background:#190a03 url(../../images/register/main/background.jpg) 50% 0 no-repeat;}
+.footer, .footer .needHelp { border-color: #686868; }
+.footer .divider { color: #777777; }
+.footer, .languageSelection { color: #acacac;}
+.footer a, .languageSelection a.changeLanguage { color: #fff; }
+.footer a.bnet { background-image: url(../../images/logos/bnet-logo.png); width: 240px; height: 65px; }
+.footer a.blizzard { background-image: url(../../images/logos/blizz-logo.png); width: 100px; height: 57px; }
+
+.header-text { width:1280px; height:105px; position:absolute; top:0; left:50%; margin-left:-640px; }
+.wow-logo { width:457px; height:80px; position:relative; top:683px; left:184px } 
+
+.topLogin { background-image: none; background-color: #f6dc9f; border: 1px solid #9a6d4d; color: #620d06;margin: 0 0 20px 100px; position: relative; left: -68px; }
+a.signIn span { background-image: url(../../images/register/small-button-right.gif); }
+a.signIn { background-image: url(../../images/register/small-button-left.gif); }
+.languageSelection { padding-top: 109px; }
+#previewContainer .bg:after, #previewContainer:after, #previewContainer ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Form parchment*/
+.accountInfo { width: 375px; }
+td.leftCol { font-size: 12px; width: 141px; color:#003972; font-family:Georgia, 'Times New Roman', Times, serif; font-weight:bold; letter-spacing:0;}
+.rightColumn .signUpForm h1.formHeader {width: 294px; height:47px; margin-left:30px; background:url("../../images/register/signup-msg-title.png") no-repeat 0 0;}
+.rightColumn .formHeader-desc {font:bold 12px/21px Georgia, 'Times New Roman', Times, serif; color:#003972; width:308px; margin:-4px 0 0 35px;}
+input.text { background-color: #F8F4E8; border: 2px solid #621300; float: left; font-size: 12px; height: 18px; padding: 2px; width: 155px; -moz-box-shadow: #884300 3px 3px 10px; -webkit-box-shadow: #884300 0 3px 10px; box-shadow: #884300 0 3px 10px;}
+select.text { height: 22px; margin-right: 3px; padding: 2px; width: auto; font-size: 12px;}
+.signUpForm { width: 427px;}
+.rightCol .messageBox { margin: -30px 0 0 185px; }
+#formValidation.messageBox { margin: -40px 0 0 341px; }
+.validField { height: 23px; }
+.starter-desc { position:relative; height:50px; top:661px; left:120px; width: 580px; color:#f3edd2; font-size:15px; line-height:22px; text-align:center; font-weight:normal; font-family:Georgia, 'Times New Roman', Times, serif; text-shadow: 3px 3px 3px black; }
+.starter-faq { margin-left:20px; color:#fff }
+.starter-faq a { color:#f3cd86 }
+.starter-additional-msg {color:#003972; font:bold 12px/15px Georgia, 'Times New Roman', Times, serif; margin-top:13px; text-align:center; width:320px; margin-left:30px; border:0;}
+#parchment-container .wrapper-parchment-bottom { margin-left: 3px; background: url("../../images/register/main/parchment/parchment-bottom.png") no-repeat scroll 2px 100% transparent;}
+#parchment-container { margin-top: 53px; position: relative; width: 427px; margin-left: 55px; }
+#parchment-container .parchment-top { min-height: 427px; background: no-repeat scroll 0 0 transparent;}
+#parchment-container .parchment-top-smoothener { background: no-repeat scroll 48px 496px transparent; min-height:560px }
+#parchment-container .parchment-bottom { background: no-repeat scroll 50px 100% transparent; padding-bottom: 9px;}
+#parchment-container .parchment-bottom-edge { background: no-repeat scroll 0 100% transparent; bottom: -74px; height: 74px; left: 5px;position: absolute; width: 427px; }
+
+/* Layout */
+.rightColumn { width: 540px; margin-top:0; }
+.leftColumn { width: 673px; }
+
+#touAgreeRow td {padding-top:5px;}
+#touAgreeRow .terms-desc { font-size:11px; margin-top:5px; padding-right:15px }
+#captcha td {padding-bottom:10px;}
+#securityTextRow td {padding-bottom:10px;}
+#securityTextRow .leftCol label {color:#003972; }
+
+
+/*form graphics*/
+.signUpForm .formBackground{ background:none; }
+.signUpForm .formTop{ background:none; }
+.signUpForm .formBottom{ background:none }
+.signUpForm .submit { background: url("../../images/register/main/submit.gif") no-repeat 0 0; color:#ffe81e; font-size:18px; font-family:Georgia, 'Times New Roman', Times, serif; width:240px; height:42px; line-height:42px; -moz-box-shadow: #5d401a 0 0 10px; -webkit-box-shadow: #5d401a 0 0 10px; box-shadow: #5d401a 0 0 10px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; margin-top:2px;}
+.signUpForm .submit:hover { background-position: 0 -47px;}
+
+.signUpForm { padding-top:65px; }
+#returningVisitor { top: 160px; left:740px; width:370px; clear:both;}
+#returningVisitor .returningInformation { width:330px; margin:2px 0 0 30px;}
+#returningVisitor h1.formHeader { background:none; width:340px; margin: 20px 0 0 15px;}
+#returningVisitor .formHeader span {display:block; word-wrap:break-word;}
+

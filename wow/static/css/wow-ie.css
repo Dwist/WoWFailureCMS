@@ -1,0 +1,28 @@
+
+.ui-tooltip { background: #0F0F0F; zoom: 1; }
+.character-spec li { display: block; position: relative; zoom: 1; }
+
+#content,
+#content .content-top,
+#content .content-bot { zoom: 1 }
+
+/* forms */
+.input.disabled { filter: alpha(opacity=30) }
+
+.sort-link, .sort-tab { zoom: 1; }
+
+/* page sub nav */
+#sub-nav li {float:left;}
+
+/* flyout */
+.flyout-menu ul li { border-bottom-width: expression(this.nextSibling==null ? 0 : 1); }
+.flyout-menu ul li .flyout-menu ul {
+	width: expression(this.nextSibling==null ? '200px' : '199px');
+	border-right-width: expression(this.nextSibling==null ? 0 : 1); }
+
+#header .user-plate a.profile-link .hover { display: none; }
+#header .user-plate a.profile-link:hover .hover { display: block; }
+
+#server-error { height: 900px; }
+
+.table-filters { zoom: 1; background: url("../images/form/filter-bg.jpg") no-repeat; }

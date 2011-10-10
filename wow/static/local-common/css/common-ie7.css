@@ -1,0 +1,15 @@
+
+/* ui */
+.ui-pagination li { float: left; display: block; margin-right: 2px; }
+.ui-pagination li a { float: left; }
+.ui-tooltip { float: left; width: 250px; }
+
+/* warnings */
+#service { float: right; }
+#warnings-wrapper { margin: 0; float: right; }
+.warning .warning-inner,
+.warning .warning-inner2 { min-width: 200px; }
+
+/* footer */
+#sitemap .column { width: 247px; }
+#copyright { line-height: normal; padding: 5px; }

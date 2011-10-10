@@ -1,0 +1,12 @@
+
+/* header */
+#header { z-index: 90; position: relative; zoom: 1; }
+#header .card-render { float: left; left: 0; }
+
+/* content */
+.media-frame { display: inline; }
+.tab-menu li { float: left; }
+.table-options .ui-pagination { display: block; padding-top: 10px; }
+
+/* search */
+#search-bar { width: 580px; }
