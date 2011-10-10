@@ -1,10 +1,11 @@
 = WoWFailure Project -- What has to be Done?! =
 
-1) Fix the Registration Page
-2) Recheck the missing Functions from the Account Management
-3) Make a Vote Panel     <-- =Intergrated= -->
-4) Make a Donation Panel <-- =Intergrated= -->
-5) I need to think better, to find missing Functions :P
+1) Fix the Registration Page.
+2) Recheck the missing Functions from the Account Management.
+3) Finish the new Registration Page.
+4) Make a Vote Panel .    <-- =Intergrated= -->
+5) Make a Donation Panel. <-- =Intergrated= -->
+6) I need to think better, to find missing Functions. :P
 
 # --------------------------------------------------------------
 # |CMS:                                   |    WOWFailureCMS   |

@@ -893,76 +893,7 @@ DD_belatedPNG.fix('.input-note-arrow');
 </div>
 </div>
 <div id="layout-bottom">
-<div class="wrapper">
-<div id="footer">
-<div id="sitemap">
-<div class="column">
-<h3 class="bnet">
-<a href="http://eu.battle.net/" tabindex="100">Battle.net Home</a>
-</h3>
-<ul>
-<li><a href="http://eu.battle.net/what-is/">What is Battle.net?</a></li>
-<li><a href="https://eu.battle.netwow/static/management/get-a-game.html">Buy Games</a></li>
-<li><a href="http://eu.battle.net/sc2/community/esports/">E-Sports</a></li>
-<li><a href="https://eu.battle.netwow/static/management/">Account</a></li>
-<li><a href="http://eu.blizzard.com/support/">Support</a></li>
-<li><a href="http://eu.battle.net/realid/">Real ID</a></li>
-</ul>
-</div>
-<div class="column">
-<h3 class="games">
-<a href="http://eu.battle.net/" tabindex="100">Games</a>
-</h3>
-<ul>
-<li><a href="http://eu.battle.net/sc2/">StarCraft II</a></li>
-<li><a href="http://eu.battle.net/wow/">World of Warcraft</a></li>
-<li><a href="http://eu.battle.net/d3">Diablo III</a></li>
-<li><a href="http://eu.battle.net/games/classic">Classic Games</a></li>
-<li><a href="https://eu.battle.netwow/static/download/">Game Client Downloads</a></li>
-</ul>
-</div>
-<div class="column">
-<h3 class="account">
-<a href="https://eu.battle.netwow/static/management/" tabindex="100">Account</a>
-</h3>
-<ul>
-<li><a href="https://eu.battle.netwow/static/support/password-reset.html">Can’t log in?</a></li>
-<li><a href="https://eu.battle.netwow/static/creation/tos.html">Create Account</a></li>
-<li><a href="https://eu.battle.netwow/static/management/">Account Summary</a></li>
-<li><a href="https://eu.battle.netwow/static/management/authenticator.html">Account Security</a></li>
-<li><a href="https://eu.battle.netwow/static/management/add-game.html">Add a Game</a></li>
-<li><a href="https://eu.battle.netwow/static/management/redemption/redeem.html">Redeem Promo Codes</a></li>
-</ul>
-</div>
-<div class="column">
-<h3 class="support">
-<a href="http://eu.blizzard.com/support/" tabindex="100">Support</a>
-</h3>
-<ul>
-<li><a href="http://eu.blizzard.com/support/">Support Articles</a></li>
-<li><a href="https://eu.battle.netwow/static/parental-controls/index.html">Parental Controls</a></li>
-<li><a href="http://eu.battle.net/security/">Protect Your Account</a></li>
-<li><a href="http://eu.battle.net/security/help">Help! I got hacked!</a></li>
-</ul>
-</div>
-<span class="clear"><!-- --></span>
-</div>
-<div id="copyright">
-<a href="javascript:;" tabindex="100" id="change-language">
-<span>Europe - English (EU)</span>
-</a>
-©2011 Blizzard Entertainment, Inc. All rights reserved
-<a onclick="return Core.open(this);" href="http://eu.blizzard.com/company/about/termsofuse.html" tabindex="100">Terms of Use</a>
-<a onclick="return Core.open(this);" href="http://eu.blizzard.com/company/legal/" tabindex="100">Legal</a>
-<a onclick="return Core.open(this);" href="http://eu.blizzard.com/company/about/privacy.html" tabindex="100">Privacy Policy</a>
-<a onclick="return Core.open(this);" href="http://eu.blizzard.com/company/about/infringementnotice.html" tabindex="100">Copyright Infringement</a>
-</div>
-<div id="international"></div>
-<div id="legal">
-<span class="clear"><!-- --></span>
-</div>
-</div>
-</div>
+<?php include("functions/footer_man.php"); ?>
 </div>
 <script type="text/javascript">
 //<![CDATA[

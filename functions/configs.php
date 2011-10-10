@@ -12,8 +12,10 @@ $port           = "3306";
 $pass = "ascent";
 //Logon Database
 $logon = "auth";
-//Logon Database no.2
+## DO NOT DELETE ##
+//Logon Database Used by other Functions.
 $auth           = "auth";
+## DO NOT DELETE ##
 //Realm Database
 $char = "characters";
 #####################################
