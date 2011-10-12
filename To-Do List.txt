@@ -6,10 +6,11 @@
 4) Make a Vote Panel .    <-- =Intergrated= -->
 5) Make a Donation Panel. <-- =Intergrated= -->
 6) I need to think better, to find missing Functions. :P
+7) We need to add a Translation System, Style and Function are working correctly.
 
 # --------------------------------------------------------------
-# |CMS:                                   |    WOWFailureCMS   |
-# |Original:                              |http://eu.battle.net|
+# |CMS:                                  |    WOWFailureCMS    |
+# |Original:                             |http://eu.battle.net |
 # --------------------------------------------------------------
 # |Database version:                             |    0.0.1    |
 # |Release Date:                                 | 2010-05-17  |

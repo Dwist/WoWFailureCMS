@@ -61,7 +61,6 @@ _gaq.push(['_trackPageLoadTime']);
 <div id="layout-top">
 <div class="wrapper">
 <div id="header">
-<h1 id="logo"><a href="http://eu.battle.net/" tabindex="50" accesskey="h">Battle.net</a></h1>
 <div id="navigation">
 <div id="page-menu" class="large">
 <h2 class="isolated"> Account Creation
@@ -76,9 +75,71 @@ _gaq.push(['_trackPageLoadTime']);
 <div class="wrapper">
 <div id="content">
 <div id="page-header">
-<p class="privacy-message"><b>We value and respect your privacy.</b> Find out how Blizzard safeguards user information by reading our <a href="http://eu.blizzard.com/en-gb/company/about/privacy.html" onclick="window.open(this.href); return false;">Online Privacy Policy</a>.</p>
+<?php
+			?>
+			<?php
+						  if(!isset($_SESSION['username'])){
+						  if(isset($_POST['reg'])){
+						  $accountName = mysql_real_escape_string(stripslashes($_POST['accountName']));
+						  $accountPass = stripslashes($_POST['accountPass']);
+						  $accountEmail = mysql_real_escape_string(stripslashes($_POST['accountEmail']));
+						  mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
+						  $check_query = mysql_query("SELECT * FROM account WHERE username = '".$accountName."'");
+						  $check = mysql_fetch_assoc($check_query);
+
+						  if(!$check){
+
+							if($accountPass != stripslashes($_POST['accountPassc'])){
+							  $error[]="Passwords does not match.";
+							}
+
+							if(empty($accountEmail)){
+							  $error[]="You need to enter your e-mail";
+							}
+
+							if(empty($accountPass)){
+							  $error[]="You need to enter a password";
+							}
+
+						  }else{
+							$error[]="The username has been already taken";
+						  }
+              
+              ?>
+			  <?php
+              if(isset($error) && count($error) > 0){
+                echo '<div class="errors">';
+                foreach($error as $errors){
+                echo "<font color='red'>*".$errors."</font><br />";
+                }
+                echo '</div>';
+                echo '<meta http-equiv="refresh" content="2"';
+              }else{
+				function sha_password($user,$pass){
+					$user = strtoupper($user);
+					$pass = strtoupper($pass);
+					return SHA1($user.':'.$pass);
+				}
+				$sha_pass_hash = strtoupper(sha_password($accountName,$accountPass));
+				$ip = intval($_SERVER['REMOTE_ADDR']);
+                $register_query = mysql_query("INSERT INTO account (username,sha_pass_hash,email,last_ip,expansion) VALUES ('".strtoupper($accountName)."','".mysql_real_escape_string($sha_pass_hash)."','".$accountEmail."','".$ip."','2')")or die(mysql_error());
+                $accinfoq = mysql_query("SELECT * FROM account WHERE username = '".$accountName."'");
+				$accinfo = mysql_fetch_assoc($accinfoq)or die(mysql_error());
+				mysql_select_db($server_db,$connection_setup)or die(mysql_error());
+				$register_query = mysql_query("INSERT INTO users(id) VALUES ('".mysql_real_escape_string($accinfo['id'])."')");
+				echo '<div class="success">';
+                echo $accountName.' has been successfully created.';
+                echo '</div>';
+                $_SESSION['username'] = $accountName;
+                echo '<meta http-equiv="refresh" content="2;url=index.php"';
+              }
+              ?>
+			  <?php
+						  }else{
+						  ?>
+<p class="privacy-message"><b>We value and respect your privacy.</b> Find out how Blizzard safeguards user information by reading our <a href="" onclick="window.open(this.href); return false;">Online Privacy Policy</a>.</p>
 </div>
-<form action="wow/static/creation/tos.html" method="get" class="country-select">
+<form action="" method="get" class="country-select">
 <div class="input-row input-row-select">
 <span class="input-left">
 <label for="country">
@@ -337,7 +398,7 @@ Country of Residence:
 <option value="ZMB">Zambia</option>
 <option value="ZWE">Zimbabwe</option>
 </select>
-<span class="inline-message" id="country-message"> </span>
+<span class="inline-message" id="country-message"> </span>
 </span>
 <button
 class="ui-button button1 "
@@ -357,14 +418,14 @@ tabindex="1">
 <p>
 <a
 class="ui-button button1 "
-href="wow/static/creation/tos.html"
+href=""
 tabindex="1">
 <span>
 <span>Change Country</span>
 </span>
 </a>
 <a class="ui-cancel "
-href="wow/static/creation/tos.html"
+href=""
 tabindex="1">
 <span>
 Cancel </span>
@@ -376,7 +437,7 @@ Cancel </span>
 <p>
 <a
 class="ui-button button1 "
-href="wow/static/creation/tos.html?country=CHINA"
+href="?country=CHINA"
 id="stayTaiwan"
 tabindex="1">
 <span>
@@ -386,7 +447,7 @@ tabindex="1">
 <br />
 <a
 class="ui-button button1 "
-href="http://www.battlenet.com.cnwow/static/creation/tos.html"
+href="http://www.battlenet.com.cn"
 id="gotoChina"
 tabindex="1">
 <span>
@@ -394,7 +455,7 @@ tabindex="1">
 </span>
 </a>
 <a class="ui-cancel "
-href="wow/static/creation/tos.html"
+href=""
 tabindex="1">
 <span>
 Cancel </span>
@@ -414,7 +475,7 @@ countrySubmit.style.display = 'none';
 //]]>
 </script>
 <div id="page-content">
-<form action="wow/static/creation/tos.html" method="post" id="creation">
+<form action="" method="post" id="creation">
 <div class="input-hidden">
 <input type="hidden" id="csrftoken" name="csrftoken" value="6693641e-fbf5-4e6a-af8b-00d8d853a45e" />
 <input type="hidden" name="country" value="GBR" />
@@ -425,8 +486,8 @@ var FormMsg = {
 emailMessage1: 'This will be the username you use to log in.',
 emailError1: '<span class="inline-error">Not a valid e-mail address.</span>',
 emailError2: '<span class="inline-error">E-mail addresses must match.</span>',
-passwordError1: '<span class="inline-error">Password does not meet guidelines.</span>',
-passwordError2: '<span class="inline-error">Passwords must match.</span>',
+passwordError1: '<span class="inline-error">Password does not meet the guidelines.</span>',
+passwordError2: '<span class="inline-error">Passwords must match!</span>',
 passwordStrength0: 'Too Short',
 passwordStrength1: 'Weak',
 passwordStrength2: 'Fair',
@@ -480,7 +541,7 @@ Date of Birth:
 <option value="30">30</option>
 <option value="31">31</option>
 </select>
-<span class="inline-message" id="dobDay-message"> </span>
+<span class="inline-message" id="dobDay-message"> </span>
 </span>
 <span class="input-select input-select-extra-extra-small">
 <select name="dobMonth" id="dobMonth" class="extra-extra-small border-5 glow-shadow-2" tabindex="1" required="required">
@@ -498,7 +559,7 @@ Date of Birth:
 <option value="11">November</option>
 <option value="12">December</option>
 </select>
-<span class="inline-message" id="dobMonth-message"> </span>
+<span class="inline-message" id="dobMonth-message"> </span>
 </span>
 <span class="input-select input-select-extra-extra-extra-small">
 <select name="dobYear" id="dobYear" class="extra-extra-extra-small border-5 glow-shadow-2" tabindex="1" required="required">
@@ -616,7 +677,7 @@ Date of Birth:
 <option value="1901">1901</option>
 <option value="1900">1900</option>
 </select>
-<span class="inline-message" id="dobYear-message"> </span>
+<span class="inline-message" id="dobYear-message"> </span>
 </span>
 <span class="inline-note">
 <span class="caption">Parents registering for children, <a href="wow/static/creation/parent-signup.html?country=GBR">click here.</a></span>
@@ -640,33 +701,13 @@ Title:
 <option value="3">Mrs</option>
 <option value="4">Miss</option>
 </select>
-<span class="inline-message" id="gender-message"> </span>
+<span class="inline-message" id="gender-message"> </span>
 </span>
 </span>
 </div>
 <div class="input-row input-row-text">
 <span class="input-left">
 <label for="firstname">
-<span class="label-text">
-Name:
-</span>
-<span class="input-required">*</span>
-</label>
-</span>
-<span class="input-right">
-<span class="input-text input-text-small">
-<input type="text" name="firstname" value="" id="firstname" class="small border-5 glow-shadow-2" autocomplete="off" maxlength="32" tabindex="1" required="required" placeholder="First Name" />
-<span class="inline-message" id="firstname-message"> </span>
-</span>
-<span class="input-text input-text-small">
-<input type="text" name="lastname" value="" id="lastname" class="small border-5 glow-shadow-2" autocomplete="off" maxlength="32" tabindex="1" required="required" placeholder="Last Name" />
-<span class="inline-message" id="lastname-message"> </span>
-</span>
-</span>
-</div>
-<div class="input-row input-row-text">
-<span class="input-left">
-<label for="emailAddress">
 <span class="label-text">
 E-mail Address:
 </span>
@@ -675,12 +716,28 @@ E-mail Address:
 </span>
 <span class="input-right">
 <span class="input-text input-text-small">
-<input type="email" name="emailAddress" value="" id="emailAddress" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="320" tabindex="1" required="required" placeholder="Enter E-mail Address" />
-<span class="inline-message" id="emailAddress-message"> </span>
+<input type="text" name="accountEmail" value="" id="emailAddress" class="small border-5 glow-shadow-2" autocomplete="off" maxlength="32" tabindex="1" required="required" placeholder="Enter E-mail Address" />
+<span class="inline-message" id="emailAddress-message"></span>
 </span>
 <span class="input-text input-text-small">
-<input type="email" name="emailAddressConfirmation" value="" id="emailAddressConfirmation" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="320" tabindex="1" required="required" placeholder="Re-enter E-mail Address" />
-<span class="inline-message" id="emailAddressConfirmation-message"> </span>
+<input type="text" name="emailAddressConfirmation" value="" id="lastname" class="small border-5 glow-shadow-2" autocomplete="off" maxlength="32" tabindex="1" required="required" placeholder="Re-enter E-mail Address" />
+<span class="inline-message" id="emailAddressConfirmation-message"></span>
+</span>
+</span>
+</div>
+<div class="input-row input-row-text">
+<span class="input-left">
+<label for="emailAddress">
+<span class="label-text">
+Username:
+</span>
+<span class="input-required">*</span>
+</label>
+</span>
+<span class="input-right">
+<span class="input-text input-text-small">
+<input type="email" name="accountName" value="" id="emailAddress" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="320" tabindex="1" required="required" placeholder="Enter your Username" />
+<span class="inline-message" id="emailAddress-message"></span>
 </span>
 </span>
 </div>
@@ -695,19 +752,19 @@ Password:
 </span>
 <span class="input-right">
 <span class="input-text input-text-small">
-<input type="password" id="password" name="password" value="" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="16" tabindex="1" required="required" placeholder="Enter Password" />
-<span class="inline-message" id="password-message"> </span>
+<input type="password" id="password" name="accountPass" value="" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="16" tabindex="1" required="required" placeholder="Enter Password" />
+<span class="inline-message" id="password-message"> </span>
 </span>
 <span class="input-text input-text-small">
-<input type="password" id="rePassword" name="rePassword" value="" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="16" tabindex="1" required="required" placeholder="Re-enter Password" />
-<span class="inline-message" id="rePassword-message"> </span>
+<input type="password" id="rePassword" name="accountPassc" value="" class="small border-5 glow-shadow-2" autocomplete="off" onpaste="return false;" maxlength="16" tabindex="1" required="required" placeholder="Re-enter Password" />
+<span class="inline-message" id="rePassword-message"> </span>
 </span>
 </span>
 </div>
 <div class="input-row input-row-note" id="password-strength" style="display: none">
 <div class="input-note border-5 glow-shadow">
 <div class="input-note-left">
-<p class="caption">For your security, we highly recommend that you choose a unique password that you don’t use for any other online account.</p>
+<p class="caption">For your security, we highly recommend that you choose a unique password that you don't use for any other online account.</p>
 </div>
 <div class="input-note-right border-5">
 <div class="password-strength">
@@ -720,19 +777,19 @@ Password Strength:
 <ul class="password-level" id="password-level">
 <li id="password-level-0">
 <span class="icon-16"></span>
-<span class="icon-16-label">Your password must be between 8–16 characters in length.</span>
+<span class="icon-16-label">Your password must be between 8-16 characters in length.</span>
 </li>
 <li id="password-level-1">
 <span class="icon-16"></span>
-<span class="icon-16-label">Your password may only contain alphabetic characters (A–Z), numeric characters (0–9), and punctuation.</span>
+<span class="icon-16-label">Your password may only contain alphabetic characters (A-Z), numeric characters (0-9), and punctuation.</span>
 </li>
 <li id="password-level-2">
 <span class="icon-16"></span>
-<span class="icon-16-label">Your password must contain at least one alphabetic character and one numeric character.</span>
+<span class="icon-16-label">Your password must contain at least one alphabetic character and one numeric character.</span>
 </li>
 <li id="password-level-3">
 <span class="icon-16"></span>
-<span class="icon-16-label">You cannot enter your account name as your password.</span>
+<span class="icon-16-label">You cannot enter your account name as your password.</span>
 </li>
 <li id="password-level-4">
 <span class="icon-16"></span>
@@ -759,8 +816,8 @@ Secret Question &amp; Answer:
 <option value="" selected="selected">Select a Question</option>
 <option value="1">First elementary school I attended?</option>
 <option value="2">The high school I graduated from?</option>
-<option value="3">Mother’s city of birth? </option>
-<option value="4">Father’s city of birth?</option>
+<option value="3">Mother's city of birth? </option>
+<option value="4">Father's city of birth?</option>
 <option value="5">Your city of birth?</option>
 <option value="6">Name of your first pet?</option>
 <option value="7">Best friend in high school?</option>
@@ -768,11 +825,11 @@ Secret Question &amp; Answer:
 <option value="9">Your favorite sports team?</option>
 <option value="10">Your first employer (company name)?</option>
 </select>
-<span class="inline-message" id="question1-message"> </span>
+<span class="inline-message" id="question1-message"> </span>
 </span>
 <span class="input-text input-text-small">
 <input type="text" name="answer1" value="" id="answer1" class="small border-5 glow-shadow-2" autocomplete="off" maxlength="100" tabindex="1" required="required" placeholder="Answer" />
-<span class="inline-message" id="answer1-message"> </span>
+<span class="inline-message" id="answer1-message"> </span>
 </span>
 </span>
 </div>
@@ -788,7 +845,7 @@ Secret Question &amp; Answer:
 </span>
 <span class="input-right">
 <div class="agreement-check">
-<p class="tou-desc">In order to provide the Battle.net Service, Blizzard must be entitled to access, monitor and/or review text chat, including private, or ‘whisper’ chat, in the event of complaints from other users or violations of the law. By clicking the check box below, you agree that Blizzard (or one of Blizzard’s affiliates) has the right to monitor and review personal messages you send or receive on the Battle.net Service, or through any game that is playable through the Battle.net Service, to investigate potential violations of the law, the Battle.net Terms of Use, or the Terms of Use agreement specific to any game playable on the Battle.net Service. Blizzard will not use the information for any reason other than pursuing such violations.</p>
+<p class="tou-desc">In order to provide Free Gaming, we will monitor and/or review your text chat, including private, or 'whisper' chat, in the event of complaints from other users or violations of the rules. By clicking the check box below, you agree with the rule of allowing us to review your chat Conversations ingame, to investigate potential violations of the rules. We will not use the information for any reason other than pursuing such violations.</p>
 </div>
 </span>
 </div>
@@ -816,35 +873,20 @@ I consent to Blizzard monitoring and/or reviewing my personal messages.
 <label for="agreedToToU">
 <input type="checkbox" name="agreedToToU" value="true" id="agreedToToU" tabindex="1" required="required" />
 <span class="label-text">
-I accept the <a href="http://eu.blizzard.com/en-gb/company/about/termsofuse.html" onclick="window.open(this.href); return false;">Terms of Use</a> applicable to my country of residence and if under 18 years old, agree and acknowledge that my parent or guardian has also reviewed and accepted the Terms of Use on my behalf.
+I accept the <a href="" onclick="window.open(this.href); return false;">Terms of Use</a> applicable to my country of residence and if under 18 years old, agree and acknowledge that my parent or guardian has also reviewed and accepted the Terms of Use on my behalf.
 <span class="input-required">*</span>
 </span>
 </label>
 </span>
 </div>
-<div class="input-row input-row-checkbox input-row-disclaimer">
-<span class="input-left">
-<span class="title-text">
-</span>
-<span class="input-required"></span>
-</span>
-<span class="input-right">
-<label for="blizzardNewsletter">
-<input type="checkbox" name="blizzardNewsletter" value="true" id="blizzardNewsletter" tabindex="1" />
-<span class="label-text">
-Sign up to receive news and special offers from Blizzard Entertainment to this Battle.net account’s e-mail address.
-<span class="input-required"></span>
-</span>
-</label>
-</span>
-</div>
 <div class="submit-row">
-<div class="input-left"> </div>
+<div class="input-left"> </div>
 <div class="input-right">
 <button
 class="ui-button button1 "
 type="submit"
-id="creation-submit"
+name="reg"
+id="submit"
 tabindex="1">
 <span>
 <span>Create Free Account</span>
@@ -858,6 +900,13 @@ Cancel </span>
 </a>
 </div>
 </div>
+<?php
+               }
+               }else{
+                 echo "<center>You cannot register while you're logged in!</center>";
+                 echo '<meta http-equiv="refresh" content="2;url=index.php"';
+               }
+               ?>
 <script type="text/javascript">
 //<![CDATA[
 (function() {
@@ -901,13 +950,13 @@ var xsToken = '33037d3c-3214-46b1-bcb6-7350cedc9ca5';
 var Msg = {
 support: {
 ticketNew: 'Ticket {0} was created.',
-ticketStatus: 'Ticket {0}’s status changed to {1}.',
+ticketStatus: 'Ticket {0}'s status changed to {1}.',
 ticketOpen: 'Open',
 ticketAnswered: 'Answered',
 ticketResolved: 'Resolved',
 ticketCanceled: 'Cancelled',
 ticketArchived: 'Archived',
-ticketInfo: 'Need Info',
+ticketInfo: 'Need Info',
 ticketAll: 'View All Tickets'
 },
 cms: {
