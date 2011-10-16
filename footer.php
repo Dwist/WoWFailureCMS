@@ -43,7 +43,7 @@
 <div class="bnet-offer">
 <div class="bnet-offer-bg">
 <a href="">
-<img src="<?php echo $website['root'];?>wow/static/images/services/more/copy.gif" width="300" height="100" alt="" />
+<img src="<?php echo $website['root'];?>wow/static/images/services/more/recruit.jpg" width="310" height="110" alt="" />
 </a>
 </div>
 <div class="desc">
