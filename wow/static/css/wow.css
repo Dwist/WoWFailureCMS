@@ -121,6 +121,12 @@ tr:hover .fansite-link,
 .ui-context .context .context-links .icon-ban { background-position: 0 -90px; }
 .ui-context .context .context-links .icon-auctions { background-position: 0 -120px; }
 .ui-context .context .context-links .icon-events { background-position: 0 -150px; }
+.ui-context .context .realm,
+.ui-context .character-list .primary .char .realm { display: inline; padding-right: 15px; background: url("../images/icons/arrow-up-down.gif") 100% 2px no-repeat; }
+.ui-context .context .realm.down,
+.ui-context .character-list .primary .char .realm.down { background-position: 100% -14px; }
+.ui-context .context .realm.unknown,
+.ui-context .character-list .primary .char .realm.unknown { background-position: 100% -28px; }
 .context-link { background: url("../images/layout/cms/char-arrow.png") 100% 3px no-repeat; padding-right: 14px; color: white; }
 .context-link:hover,
 .context-link.context-open { color: #ffb100; background-position: 100% -145px; }
