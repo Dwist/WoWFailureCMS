@@ -20,6 +20,9 @@ $auth           = "auth";
 $characters = "characters";
 //Characters Database Used by other Functions.
 $char = "characters";
+// For 2nd Characters Table.
+## If and ONLY if you have a second Realm. ##
+$chardb2 = "characters2";
 $cod = 'utf8';
 #####################################
 ######  Do not Touch anymore   ######

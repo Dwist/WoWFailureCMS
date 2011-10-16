@@ -4,7 +4,7 @@ require_once("configs.php");
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" xmlns:xml="http://www.w3.org/XML/1998/namespace" class="chrome chrome8">
 <head>
-<title><?php echo $website['title']; ?> - Top Honor</title>
+<title><?php echo $website['title']; ?> - Status</title>
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/wow.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common.css?v15" />
@@ -211,18 +211,10 @@ _gaq.push(['_trackPageview']);
 		<table>
 			<thead>
 				<tr>
-				
-				<?php
-
-//Connection
-$sqlip='localhost';
-$sqluser='root';
-$sqlpass='ascent';
-$port='3306';
-$chardb = "characters";
-
-$con = mysql_connect($sqlip, $sqluser, $sqlpass, $sqlport) or die(mysql_error());
-mysql_select_db($chardb, $con) or die (mysql_error());
+<?php require_once("functions/configs.php"); ?>
+<?php
+$con = mysql_connect($host, $user, $pass, $sqlport) or die(mysql_error());
+mysql_select_db($char, $con) or die (mysql_error());
 $sql = mysql_query("SELECT * FROM characters WHERE online='1' ORDER BY RAND() LIMIT 49") or die(mysql_error());
 $numrows = mysql_num_rows($sql);
 if($numrows > 0)

@@ -211,18 +211,10 @@ _gaq.push(['_trackPageview']);
 		<table>
 			<thead>
 				<tr>
-				
-				<?php
-
-//Connection
-$sqlip='localhost';
-$sqluser='root';
-$sqlpass='ascent';
-$port='3306';
-$chardb = "characters";
-
-$con = mysql_connect($sqlip, $sqluser, $sqlpass, $sqlport) or die(mysql_error());
-mysql_select_db($chardb, $con) or die (mysql_error());
+<?php require_once("functions/configs.php"); ?>				
+<?php
+$con = mysql_connect($host, $user, $pass, $sqlport) or die(mysql_error());
+mysql_select_db($chardb2, $con) or die (mysql_error());
 $sql = mysql_query("SELECT * FROM characters WHERE online='1' ORDER BY RAND() LIMIT 49") or die(mysql_error());
 $numrows = mysql_num_rows($sql);
 if($numrows > 0)
