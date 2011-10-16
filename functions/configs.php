@@ -17,9 +17,11 @@ $logon = "auth";
 $auth           = "auth";
 ## DO NOT DELETE ##
 //Realm Database
+$characters = "characters";
+//Characters Database Used by other Functions.
 $char = "characters";
+$cod = 'utf8';
 #####################################
 ######  Do not Touch anymore   ######
 #####################################
 ?>
-

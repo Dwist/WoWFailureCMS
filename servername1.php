@@ -4,7 +4,7 @@ require_once("configs.php");
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" xmlns:xml="http://www.w3.org/XML/1998/namespace" class="chrome chrome8">
 <head>
-<title><?php echo $website['title']; ?> - Status</title>
+<title><?php echo $website['title']; ?> - Top Honor</title>
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/wow.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common.css?v15" />
@@ -68,16 +68,7 @@ _gaq.push(['_trackPageview']);
 	</div>
 
 	<div id="realm-status">
-	<ul class="tab-menu ">
-				<li>
-					<a href="javascript:;"
-					   
-					    class="tab-active">
-					   All Realms
-					</a>
-				</li>
-	</ul>
-
+<?php include("functions/status_nav.php"); ?>
 		<div class="filter-toggle">
 			<a href="javascript:;" class="selected" onclick="RealmStatus.filterToggle(this)">
 				

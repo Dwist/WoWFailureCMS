@@ -159,7 +159,7 @@ JavaScript must be enabled to use this site.
 <a href="">Vote and Get Rewarded</a>
 </li>
 <li class="add-game-card">
-<a href="">Change your Password</a>
+<a href="change-password.php">Change your Password</a>
 </li>
 <li class="payment-history">
 <a href="">View Account History</a>

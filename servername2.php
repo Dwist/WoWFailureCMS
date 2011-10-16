@@ -68,16 +68,7 @@ _gaq.push(['_trackPageview']);
 	</div>
 
 	<div id="realm-status">
-	<ul class="tab-menu ">
-				<li>
-					<a href="javascript:;"
-					   
-					    class="tab-active">
-					   All Realms
-					</a>
-				</li>
-	</ul>
-
+<?php include("functions/status_nav.php"); ?>
 		<div class="filter-toggle">
 			<a href="javascript:;" class="selected" onclick="RealmStatus.filterToggle(this)">
 				
