@@ -182,6 +182,40 @@ $page_cat = "home";
 				
 					<!-- Right Panel -->
 					<div id="right" class="ajax-update">
+					<div id="sidebar-marketing" class="sidebar-module">
+				<div class="bnet-offer">
+				<div class="sidebar-title"><h3 class="title-bnet-ads">Promo Sale</h3></div>
+				<!--  -->
+				<div class="bnet-offer-bg">
+				<a href="" target="_blank" id="vote" class="bnet-offer-image" onclick="">
+				<img src="wow/static/images/sidebar/Share/vote.jpg" width="300" height="250" alt=""/>
+						</a>
+						</div>
+						</div>
+						</div>
+						<div id="sidebar-marketing" class="sidebar-module">
+						<div class="sidebar-title"><h3 class="title-bnet-ads">Server Uptime</h3></div>
+						<?php
+						require_once("functions/configs.php");
+
+						mysql_connect($host, $user, $pass) or die ("<font color='#00FF00'>Can't connect with</font> <font color='#FF0000'>$host</font>");
+						mysql_selectdb ("$auth");
+
+						$sql = mysql_query ("SELECT * FROM $auth.`uptime` ORDER BY `starttime` DESC LIMIT 1");  
+						$uptime_results = mysql_fetch_array($sql);    
+
+						if ($uptime_results['uptime'] > 86400) { 
+					    $uptime =  round(($uptime_results['uptime'] / 24 / 60 / 60),2)." Days";
+						}
+						elseif($uptime_results['uptime'] > 3600) { 
+ 						$uptime =  round(($uptime_results['uptime'] / 60 / 60),2)." Hours";
+						}
+						else { 
+						$uptime =  round(($uptime_results['uptime'] / 60),2)." Min";
+						}
+						echo "<font color='#00FF00'>Uptime:</font> <font color='#FF0000'>$uptime</font> <br>";
+						?>
+						</div>
 						<!-- Do not Touch here -->
 						<!-- X -->
 						<div class="sidebar-module" id="sidebar-bnet-ads">

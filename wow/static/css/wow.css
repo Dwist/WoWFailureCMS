@@ -312,7 +312,7 @@ tr:hover .fansite-link,
 #footer-promotions a { color: #BD8100 }
 #footer-promotions .desc { padding: 5px 0; }
 #footer-promotions .subtitle { color: #71401F; font-weight: normal; padding-top: 5px }
-.bnet-offer-bg { border: 1px solid #372511; overflow: hidden; margin-bottom: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;  -moz-box-shadow:0 0 6px #000000; -webkit-box-shadow:0 0 6px #000000; box-shadow:0 0 6px #000000; }
+.bnet-offer-bg { border: 1px solid #372511; overflow: hidden; margin-bottom: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;  -moz-box-shadow:0 0 6px #000000; -webkit-box-shadow:0 0 6px #000000; box-shadow:0 0 6px #000000; width:302px;}
 .bnet-offer-bg:hover { border-color: #CD9000; }
 .bnet-offer-image { display: block; border: 1px solid #000; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
 .bnet-offer-image img { display: block; }
