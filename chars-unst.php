@@ -129,6 +129,23 @@ Taiwan: 0800-303-585<br />
 <p>Enter the username and password of the World of Warcraft account and the Character you wish to transfer from the stucked area. You will have the opportunity to move or to continue your journey ingame. You must be offline from your account to let this succeed.</p>
 <div id="page-content">
 <form method="post" action="" class="account-merge" id="account-merge">
+<div id="wowLogin">
+<div class="input-row input-row-text">
+<span class="input-left">
+<label for="username">
+<span class="label-text">
+World of Warcraft Account Name:
+</span>
+<span class="input-required">*</span>
+</label>
+</span>
+<span class="input-right">
+<span class="input-text input-text-small">
+<input type="text" name="username" value='<?php echo strtolower($_SESSION['username']); ?>' id="username" class="input border-5 glow-shadow-2 form-disabled" autocomplete="off" tabindex="1" required="required" disabled="disabled" />
+<span class="inline-message" id="username-message"></span>
+</span>
+</span>
+</div>
 <?php
 function char_unstuck(){
 global $host, $user, $pass, $logon, $char;
@@ -170,26 +187,10 @@ $unstuck = mysql_query("UPDATE $char.characters SET position_x = '$px', position
 //Success
 print'Your character is unlocked.';
 }}}}}}}}
-print'<table align="center">
+print'
+<table align="center">
 <form action="" method="post">
 <tr>
-<div id="wowLogin">
-<div class="input-row input-row-text">
-<span class="input-left">
-<label for="username">
-<span class="label-text">
-World of Warcraft Account Name:
-</span>
-<span class="input-required">*</span>
-</label>
-</span>
-<span class="input-right">
-<span class="input-text input-text-small">
-<input type="text" name="username" value="" id="username" class="small border-5 glow-shadow-2" autocomplete="off" tabindex="1" required="required" />
-<span class="inline-message" id="username-message"></span>
-</span>
-</span>
-</div>
 <div id="wowLogin">
 <div class="input-row input-row-text">
 <span class="input-left">
