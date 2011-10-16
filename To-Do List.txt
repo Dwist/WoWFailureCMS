@@ -7,6 +7,9 @@
 5) Make a Donation Panel. <-- =Intergrated= -->
 6) I need to think better, to find missing Functions. :P
 7) We need to add a Translation System, Style and Function are working correctly.
+8) Fix and Create the Character View System.
+9) Create the SQL for the Full Support of the Website. (For the account Management)
+10) Make the invisible slideshow at the footer.
 
 # --------------------------------------------------------------
 # |CMS:                                  |    WOWFailureCMS    |
