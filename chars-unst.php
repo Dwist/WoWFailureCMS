@@ -1,10 +1,8 @@
 <?php
 include("configs.php");
-$page_cat = "account";
+$page_cat = "security";
 ?>
-<?php
-include("functions/configs.php");
-?>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb">
 <head>
@@ -12,7 +10,6 @@ include("functions/configs.php");
 <meta content="false" http-equiv="imagetoolbar" />
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/bam.ico" type="image/x-icon"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://eu.battle.net/en-gb/data/opensearch" title="Battle.net Search" />
 <link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/management/common.css" />
 <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie.css?v22" /><![endif]-->
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie6.css?v22" /><![endif]-->
@@ -151,7 +148,7 @@ function char_unstuck(){
 global $host, $user, $pass, $logon, $char;
 if(isset($_POST['unstuck'])){
 //Connect To Database
-$connect = mysql_connect("$host", "$user", "$pass") or die('Connection Error: ' . mysql_error());
+$connect = mysql_connect("$serveraddress", "$serveruser", "$serverpass") or die('Connection Error: ' . mysql_error());
 //Get Username From Input
 $username = $_POST['username'];
 //Get Password From Input

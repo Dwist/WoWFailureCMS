@@ -2,13 +2,15 @@
 session_save_path('phpsessions');
 session_start();
 
-$serveraddress = "localhost"; // Your mysql server address
-$serveruser = "root"; // Your mysql user
-$serverpass = "ascent"; //Your mysql password
+$serveraddress = "localhost"; // Your MySQL server address
+$serveruser = "root"; // Your MySQL user
+$serverpass = "ascent"; //Your MySQL password
+$serverport	= "3306"; // Your MySQL Port
 
 $server_db = "site"; //Your website database
 $server_adb = "auth"; //Your account database
 $server_cdb = "characters"; //Your characters database
+$server_cdb_2 = "characters2"; //Your characters database
 $server_wdb = "world"; //Your world database
 
 $website['title'] = "WoWFailureCMS";

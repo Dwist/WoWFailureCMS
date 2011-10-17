@@ -211,10 +211,10 @@ _gaq.push(['_trackPageview']);
 		<table>
 			<thead>
 				<tr>
-<?php require_once("functions/configs.php"); ?>				
+			
 <?php
-$con = mysql_connect($host, $user, $pass, $sqlport) or die(mysql_error());
-mysql_select_db($chardb2, $con) or die (mysql_error());
+$con = mysql_connect($serveraddress, $serveruser, $serverpass, $serverport) or die(mysql_error());
+mysql_select_db($server_cdb_2, $con) or die (mysql_error());
 $sql = mysql_query("SELECT * FROM characters WHERE online='1' ORDER BY RAND() LIMIT 49") or die(mysql_error());
 $numrows = mysql_num_rows($sql);
 if($numrows > 0)

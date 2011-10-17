@@ -90,8 +90,8 @@ if(isset($_POST['submit']))
         $enewpass = strtoupper($passwordnewe);
         $enewpass1 = strtoupper($passwordNew1e);
         
-        $con = mysql_connect("$host", "$user", "$pass") or die(mysql_error());
-        mysql_select_db("$logon", $con) or die(mysql_error());
+        $con = mysql_connect("$serveraddress", "$serveruser", "$serverpass") or die(mysql_error());
+        mysql_select_db("$server_adb", $con) or die(mysql_error());
         $query = "SELECT id FROM account WHERE username = '".$account."' AND sha_pass_hash = '".$eoldpass."'";
 
         $result = mysql_query($query) or die(mysql_error());

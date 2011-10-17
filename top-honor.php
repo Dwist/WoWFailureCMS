@@ -211,14 +211,11 @@ _gaq.push(['_trackPageview']);
 			<thead>
 				<tr>
 				<?php
-require_once("functions/configs.php");
-?>
-<?php
 
 
 
-$connect = mysql_connect($host,$user,$pass) OR DIE("'Can't connect with $host"); 
-mysql_select_db($characters,$connect) or die(mysql_error()); 
+$connect = mysql_connect($serveraddress,$serveruser,$serverpass) OR DIE("'Can't connect with $host"); 
+mysql_select_db($server_cdb,$connect) or die(mysql_error()); 
 
 $result = mysql_query("SELECT * FROM `characters` ORDER BY `totalKills` DESC LIMIT 0 , 100 ");  
 
