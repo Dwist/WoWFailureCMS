@@ -109,7 +109,7 @@ _gaq.push(['_trackPageLoadTime']);
 					</div>
 					<div class="middle">1</div>
 					<div class="right">
-						<h2 class="caption">Vote 1</h2>
+						<h2 class="caption"><a href="">Vote 1</a></h2>
 						<p>Text for info Goes here</p>
 					</div>
 				</div>
@@ -119,7 +119,7 @@ _gaq.push(['_trackPageLoadTime']);
 					</div>
 					<div class="middle">2</div>
 					<div class="right">
-						<h2 class="caption">Vote 2</h2>
+						<h2 class="caption"><a href="">Vote 2</a></h2>
 						<p>Text for info Goes here</p>
 						</div>
 				</div>
@@ -129,7 +129,7 @@ _gaq.push(['_trackPageLoadTime']);
 					</div>
 					<div class="middle">3</div>
 					<div class="right">
-						<h2 class="caption">Vote 3</h2>
+						<h2 class="caption"><a href="">Vote 3</a></h2>
 						<p>Text for info Goes here</p>
 						</div>
 				</div>
@@ -139,7 +139,7 @@ _gaq.push(['_trackPageLoadTime']);
 					</div>
 					<div class="middle">4</div>
 					<div class="right">
-						<h2 class="caption">Vote 4</h2>
+						<h2 class="caption"><a href="">Vote 4</a></h2>
 						<p>Text for info Goes here</p>
 						</div>
 				</div>
@@ -149,7 +149,7 @@ _gaq.push(['_trackPageLoadTime']);
 					</div>
 					<div class="middle">5</div>
 					<div class="right">
-						<h2 class="caption">Vote 5</h2>
+						<h2 class="caption"><a href="">Vote 5</a></h2>
 						<p>Text for info Goes here</p>
 						</div>
 				</div>
