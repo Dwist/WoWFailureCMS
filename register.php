@@ -137,8 +137,12 @@ _gaq.push(['_trackPageLoadTime']);
                 
                     if ($register_logon == true && $register_cms == true)
                     {
-                        echo '<div class="success">';
-                        echo $accountName.' has been successfully created.';
+                        echo '<div class="alert-page">';
+                        echo '<div class="alert-page-message success-page">
+								<p class="text-green title"><strong>Success!</strong></p>
+								<p class="caption">Your preferences and your account have been successfully created.</p>
+								<p class="caption"><a href="account_man.php">Back to Account Management</a></p>
+								</div>';
                         echo '</div>';
                         $_SESSION['username'] = $accountName;
                         echo '<meta http-equiv="refresh" content="3;url=index.php"';
@@ -910,7 +914,16 @@ Cancel </span>
 <?php
                }
                }else{
-                 echo "<center>You cannot register while you're logged in!</center>";
+                 echo '<div class="alert error closeable border-4 glow-shadow">
+						<div class="alert-inner">
+						<div class="alert-message">
+						<p class="title"><strong>An error has occurred.</strong></p>
+						<p class="error.password.mustMatch">You can not Register while you are logged in.</p>
+						</div>
+						</div>
+						<a class="alert-close" href="#" onclick="$(this).parent().fadeOut(250, function() { $(this).css({opacity:0}).animate({height: 0}, 100, function() { $(this).remove(); }); }); return false;">Close</a>
+						<span class="clear"><!-- --></span>
+						</div>';
                  echo '<meta http-equiv="refresh" content="2;url=index.php"';
                }
                ?>

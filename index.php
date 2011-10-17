@@ -184,7 +184,7 @@ $page_cat = "home";
 					<div id="right" class="ajax-update">
 					<div id="sidebar-marketing" class="sidebar-module">
 				<div class="bnet-offer">
-				<div class="sidebar-title"><h3 class="title-bnet-ads">Promo Sale</h3></div>
+				<div class="sidebar-title"><h3 class="title-bnet-ads">Promo Advertisement</h3></div>
 				<!--  -->
 				<div class="bnet-offer-bg">
 				<a href="" target="_blank" id="vote" class="bnet-offer-image" onclick="">
