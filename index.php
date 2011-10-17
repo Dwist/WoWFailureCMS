@@ -196,12 +196,12 @@ $page_cat = "home";
 						<div id="sidebar-marketing" class="sidebar-module">
 						<div class="sidebar-title"><h3 class="title-bnet-ads">Server Uptime</h3></div>
 						<?php
-						require_once("functions/configs.php");
+						require_once("configs.php");
 
-						mysql_connect($host, $user, $pass) or die ("<font color='#00FF00'>Can't connect with</font> <font color='#FF0000'>$host</font>");
-						mysql_selectdb ("$auth");
+						mysql_connect($serveraddress, $serveruser, $serverpass) or die ("<font color='#00FF00'>Can't connect with</font> <font color='#FF0000'>$host</font>");
+						mysql_selectdb ("$server_adb");
 
-						$sql = mysql_query ("SELECT * FROM $auth.`uptime` ORDER BY `starttime` DESC LIMIT 1");  
+						$sql = mysql_query ("SELECT * FROM $server_adb.`uptime` ORDER BY `starttime` DESC LIMIT 1");  
 						$uptime_results = mysql_fetch_array($sql);    
 
 						if ($uptime_results['uptime'] > 86400) { 

@@ -51,6 +51,7 @@
 <li><a href="">Race Change</a></li>
 <li><a href="">Character Transfer</a></li>
 <li><a href="">Appearance Change</a></li>
+<li><a href="raf-invite.php">Recruit a Friend</a></li>
 </ul>
 </li>
 </ul>

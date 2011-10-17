@@ -1,9 +1,6 @@
 <?php
 include("configs.php");
-$page_cat = "account";
-?>
-<?php
-include("functions/configs.php");
+$page_cat = "security";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb">
@@ -64,7 +61,7 @@ _gaq.push(['_trackPageLoadTime']);
         <div id="layout-top">
             <div class="wrapper">
                 <div id="header">
-    <?php include("functions/navigation.php"); ?>
+    <?php include("functions/header_account.php"); ?>
 	<?php include("functions/footer_man_nav.php"); ?>
         <div id="layout-middle">
             <div class="wrapper">
