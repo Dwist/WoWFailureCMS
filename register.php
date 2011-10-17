@@ -10,23 +10,23 @@ $page_cat = "account";
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/bam.ico" type="image/x-icon"/>
 <link rel="search" type="application/opensearchdescription+xml" href="http://eu.battle.net/en-gb/data/opensearch" title="Battle.net Search" />
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common.css?v22" />
-<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie.css?v22" /><![endif]-->
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie6.css?v22" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie7.css?v22" /><![endif]-->
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet.css?v21" />
-<link rel="stylesheet" type="text/css" media="print" href="wow/static/css/bnet-print.css?v21" />
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs.css?v21" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs-ie6.css?v21" /><![endif]-->
-<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs-ie.css?v21" /><![endif]-->
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-creation/streamlined-creation.css?v21" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-creation/streamlined-creation-ie6.css?v21" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-creation/streamlined-creation-ie7.css?v21" /><![endif]-->
-<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie.css?v21" /><![endif]-->
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie6.css?v21" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common.css" />
+<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie7.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet.css" />
+<link rel="stylesheet" type="text/css" media="print" href="wow/static/css/bnet-print.css" />
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs-ie6.css" /><![endif]-->
+<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/inputs-ie.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-reg/streamlined-creation.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-reg/streamlined-creation-ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/account-reg/streamlined-creation-ie7.css" /><![endif]-->
+<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie6.css" /><![endif]-->
 <script type="text/javascript" src="wow/static/local-common/js/third-party/jquery-1.4.4-p1.min.js"></script>
-<script type="text/javascript" src="wow/static/local-common/js/core.js?v22"></script>
-<script type="text/javascript" src="wow/static/local-common/js/tooltip.js?v22"></script>
+<script type="text/javascript" src="wow/static/local-common/js/core.js"></script>
+<script type="text/javascript" src="wow/static/local-common/js/tooltip.js"></script>
 <!--[if IE 6]> <script type="text/javascript">
 //<![CDATA[
 try { document.execCommand('BackgroundImageCache', false, true) } catch(e) {}
@@ -929,7 +929,7 @@ Core.appendFrame('https://bs.serving-sys.com/BurstingPipe/ActivityServer.bs?cn=a
 });
 //]]>
 </script>
-<!--[if IE 6]> <script type="text/javascript" src="wow/static/local-common/js/third-party/DD_belatedPNG.js?v22"></script>
+<!--[if IE 6]> <script type="text/javascript" src="wow/static/local-common/js/third-party/DD_belatedPNG.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 DD_belatedPNG.fix('.icon-32');
@@ -1028,9 +1028,9 @@ pet: 'pet'
 };
 //]]>
 </script>
-<script type="text/javascript" src="wow/static/js/bam.js?v21"></script>
-<script type="text/javascript" src="wow/static/local-common/js/tooltip.js?v22"></script>
-<script type="text/javascript" src="wow/static/local-common/js/menu.js?v22"></script>
+<script type="text/javascript" src="wow/static/js/bam.js"></script>
+<script type="text/javascript" src="wow/static/local-common/js/tooltip.js"></script>
+<script type="text/javascript" src="wow/static/local-common/js/menu.js"></script>
 <script type="text/javascript">
 $(function() {
 Menu.initialize();
@@ -1039,19 +1039,19 @@ Locale.dataPath = 'data/i18n.frag.xml';
 });
 </script>
 <!--[if lt IE 8]>
-<script type="text/javascript" src="wow/static/local-common/js/third-party/jquery.pngFix.pack.js?v22"></script>
+<script type="text/javascript" src="wow/static/local-common/js/third-party/jquery.pngFix.pack.js"></script>
 <script type="text/javascript">$('.png-fix').pngFix();</script>
 <![endif]-->
-<script type="text/javascript" src="wow/static/js/inputs.js?v21"></script>
-<script type="text/javascript" src="wow/static/js/account-creation/streamlined-creation.js?v21"></script>
+<script type="text/javascript" src="wow/static/js/inputs.js"></script>
+<script type="text/javascript" src="wow/static/js/account-creation/streamlined-creation.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-Core.load("wow/static/local-common/js/overlay.js?v22");
-Core.load("wow/static/local-common/js/search.js?v22");
-Core.load("wow/static/local-common/js/third-party/jquery-ui-1.8.6.custom.min.js?v22");
-Core.load("wow/static/local-common/js/third-party/jquery.mousewheel.min.js?v22");
-Core.load("wow/static/local-common/js/third-party/jquery.tinyscrollbar.custom.js?v22");
-Core.load("wow/static/local-common/js/login.js?v22", false, function() {
+Core.load("wow/static/local-common/js/overlay.js");
+Core.load("wow/static/local-common/js/search.js");
+Core.load("wow/static/local-common/js/third-party/jquery-ui-1.8.6.custom.min.js");
+Core.load("wow/static/local-common/js/third-party/jquery.mousewheel.min.js");
+Core.load("wow/static/local-common/js/third-party/jquery.tinyscrollbar.custom.js");
+Core.load("wow/static/local-common/js/login.js", false, function() {
 Login.embeddedUrl = 'https://eu.battle.net/login/login.frag';
 });
 //]]>
