@@ -17,15 +17,15 @@ include("functions/configs.php");
 <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie.css?v22" /><![endif]-->
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie6.css?v22" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie7.css?v22" /><![endif]-->
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet.css?v21" />
-<link rel="stylesheet" type="text/css" media="print" href="wow/static/css/bnet-print.css?v21" />
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/dashboard.css?v21" />
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/services.css?v21" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/services-ie6.css?v21" /><![endif]-->
-<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/wow/raf.css?v21" />
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/wow/raf-ie6.css?v21" /><![endif]-->
-<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie.css?v21" /><![endif]-->
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie6.css?v21" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet.css" />
+<link rel="stylesheet" type="text/css" media="print" href="wow/static/css/bnet-print.css" />
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/dashboard.css" />
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/services.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/services-ie6.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/wow/raf.css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/management/wow/raf-ie6.css" /><![endif]-->
+<!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/css/bnet-ie6.css" /><![endif]-->
 <script type="text/javascript" src="wow/static/local-common/js/third-party/jquery-1.4.4-p1.min.js"></script>
 <script type="text/javascript" src="wow/static/local-common/js/core.js?v22"></script>
 <script type="text/javascript" src="wow/static/local-common/js/tooltip.js?v22"></script>
@@ -64,29 +64,11 @@ _gaq.push(['_trackPageLoadTime']);
         <div id="layout-top">
             <div class="wrapper">
                 <div id="header">
-                    <div id="search-bar">
-                        <form action="https://eu.battle.net/search" method="get" id="search-form">
-	                        <div>
-	                            <input type="text" name="q" id="search-field" value="Search Battle.net" maxlength="35" alt="Search Battle.net" tabindex="50" accesskey="q" />
-								<input type="submit" id="search-button" value="" title="Search Battle.net" tabindex="50" />
-	                        </div>
-	                    </form>
-                    </div>
-
-                    <h1 id="logo"><a href="http://eu.battle.net/" tabindex="50" accesskey="h">Battle.net</a></h1>
-
     <?php include("functions/navigation.php"); ?>
 	<?php include("functions/footer_man_nav.php"); ?>
-
         <div id="layout-middle">
             <div class="wrapper">
                 <div id="content">
-
-
-
-	
-	
-
 	<div class="dashboard service">
 
 		<div class="primary">
@@ -95,38 +77,38 @@ _gaq.push(['_trackPageLoadTime']);
 	<span class="float-right"><span class="form-req">*</span> Required</span>
     <h2 class="subcategory">Referrals &amp; Rewards</h2>
     <h3 class="headline">Recruit a Friend</h3>
-    <a href="wow/static/management/wow/dashboard.html?region=EU&amp;accountName=PAP123"><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft®" width="48" height="48" /></a>
+    <a href=""><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft®" width="48" height="48" /></a>
 			</div>
 
 			<div class="service-wrapper">
 
     <p class="service-nav">
-            <a href="wow/static/management/wow/services/raf-invite.html?l=PAP123&amp;r=EU" class="active">Send Invitations</a>
-            <a href="wow/static/management/wow/services/raf-status.html?l=PAP123&amp;r=EU">History/Status</a>
-            <a href="wow/static/raf-instructions.html?l=PAP123&amp;r=EU&amp;i=true">How It Works</a>
-            <a href="wow/static/raf-instructions.html?l=PAP123&amp;r=EU">Instructions For Recipient</a>
+            <a href="">Send Invitations</a>
+            <a href="">History/Status</a>
+            <a href="">How It Works</a>
+            <a href="">Instructions For Recipient</a>
     </p>
 
 	<div class="raf-service-info">
-    You have <a href="raf-status.html?l=PAP123&amp;r=EU">0 friends</a> linked to your account and 19 referrals remaining.
+    You have <a href="">0 friends</a> linked to your account and 19 referrals remaining.
     <ul>
         <li>Level together and faster</li>
         <li>Gain rewards if your friend subscribes</li>
         <li>Get a unique two-person mount</li>
     </ul>
-    <a href="wow/static/raf-instructions.html?l=PAP123&amp;r=EU&amp;i=true">More details on how it works…</a>
+    <a href="">More details on how it works…</a>
     <div class="sub-section">
-        To recruit friends who used to play, use a <a href="wow/static/management/wow/services/sor-invite.html?l=PAP123&amp;r=EU">Scroll of Resurrection</a> instead!
+        To recruit friends who used to play, use a <a href="">Scroll of Resurrection</a> instead!
     </div>
 	</div>
 
 	<div class="service-form">
-                        Fill in your friend’s information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Recruit a Friend invitation <a href="raf-status.html?l=PAP123&amp;r=EU">here</a>.
+                        Fill in your friend's information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Recruit a Friend invitation <a href="raf-status.html?l=PAP123&amp;r=EU">here</a>.
 
-                <form method="POST" action="raf-invite.html" id="raf-form">
+                <form method="POST" action="raf-invite.php" id="raf-form">
 
-                    <input type="hidden" name="l" value="PAP123"/>
-                    <input type="hidden" name="r" value="EU"/>
+                    <input type="hidden" name="" value=""/>
+                    <input type="hidden" name="" value=""/>
 
 
 	
@@ -139,7 +121,7 @@ _gaq.push(['_trackPageLoadTime']);
 	
 	<div class="form-row required">
 									<label for="name" class="label-full ">
-						<strong>                        Friend’s Name:
+						<strong>                        Friend's Name:
 </strong>
 						<span class="form-required">*</span>
 					</label>
@@ -166,7 +148,7 @@ _gaq.push(['_trackPageLoadTime']);
 	
 	<div class="form-row required">
 									<label for="email" class="label-full ">
-						<strong>                            Friend’s Email Address:
+						<strong>                            Friend's Email Address:
 </strong>
 						<span class="form-required">*</span>
 					</label>
@@ -273,7 +255,7 @@ var xsToken = 'b213c993-d61d-4957-9141-9da399fd7d54';
 var Msg = {
 support: {
 ticketNew: 'Ticket {0} was created.',
-ticketStatus: 'Ticket {0}’s status changed to {1}.',
+ticketStatus: 'Ticket {0}'s status changed to {1}.',
 ticketOpen: 'Open',
 ticketAnswered: 'Answered',
 ticketResolved: 'Resolved',
@@ -351,7 +333,7 @@ pet: 'pet'
 };
 //]]>
 </script>
-<script type="text/javascript" src="wow/static/js/bam.js?v21"></script>
+<script type="text/javascript" src="wow/static/js/bam.js"></script>
 <script type="text/javascript" src="wow/static/local-common/js/tooltip.js?v22"></script>
 <script type="text/javascript" src="wow/static/local-common/js/menu.js?v22"></script>
 <script type="text/javascript">
@@ -365,7 +347,7 @@ Locale.dataPath = 'data/i18n.frag.xml';
 <script type="text/javascript" src="wow/static/local-common/js/third-party/jquery.pngFix.pack.js?v22"></script>
 <script type="text/javascript">$('.png-fix').pngFix();</script>
 <![endif]-->
-<script type="text/javascript" src="wow/static/js/management/wow/raf.js?v21"></script>
+<script type="text/javascript" src="wow/static/js/management/wow/raf.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 Core.load("wow/static/local-common/js/overlay.js?v22");
