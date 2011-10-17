@@ -122,16 +122,28 @@ _gaq.push(['_trackPageLoadTime']);
 				}
 				$sha_pass_hash = strtoupper(sha_password($accountName,$accountPass));
 				$ip = intval($_SERVER['REMOTE_ADDR']);
-                $register_query = mysql_query("INSERT INTO account (username,sha_pass_hash,email,last_ip,expansion) VALUES ('".strtoupper($accountName)."','".mysql_real_escape_string($sha_pass_hash)."','".$accountEmail."','".$ip."','2')")or die(mysql_error());
+                
+				
+				mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
                 $accinfoq = mysql_query("SELECT * FROM account WHERE username = '".$accountName."'");
-				$accinfo = mysql_fetch_assoc($accinfoq)or die(mysql_error());
-				mysql_select_db($server_db,$connection_setup)or die(mysql_error());
-				$register_query = mysql_query("INSERT INTO users(id) VALUES ('".mysql_real_escape_string($accinfo['id'])."')");
-				echo '<div class="success">';
-                echo $accountName.' has been successfully created.';
-                echo '</div>';
-                $_SESSION['username'] = $accountName;
-                echo '<meta http-equiv="refresh" content="2;url=index.php"';
+                $accinfo = mysql_num_rows($accinfoq);
+          
+                if ($accinfo == 0)
+                {
+                    $register_logon = mysql_query("INSERT INTO account (username,sha_pass_hash,email,last_ip,expansion) VALUES ('".strtoupper($accountName)."','".mysql_real_escape_string($sha_pass_hash)."','".$accountEmail."','".$ip."','2')")or die(mysql_error());
+              
+                    mysql_select_db($server_db,$connection_setup)or die(mysql_error());
+                    $register_cms = mysql_query("INSERT INTO users(id) VALUES ('".mysql_real_escape_string($accinfo['id'])."')");
+                
+                    if ($register_logon == true && $register_cms == true)
+                    {
+                        echo '<div class="success">';
+                        echo $accountName.' has been successfully created.';
+                        echo '</div>';
+                        $_SESSION['username'] = $accountName;
+                        echo '<meta http-equiv="refresh" content="3;url=index.php"';
+                    }
+                }
               }
               ?>
 			  <?php
