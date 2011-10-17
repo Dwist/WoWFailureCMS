@@ -894,12 +894,7 @@ I accept the <a href="" onclick="window.open(this.href); return false;">Terms of
 <div class="submit-row">
 <div class="input-left"> </div>
 <div class="input-right">
-<button
-class="ui-button button1 "
-type="submit"
-name="reg"
-id="submit"
-tabindex="1">
+<button class="ui-button button1" type="submit" name="reg" onclick="Form.submit(this)" id="submit" tabindex="1">
 <span>
 <span>Create Free Account</span>
 </span>
