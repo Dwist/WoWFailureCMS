@@ -359,6 +359,8 @@ $total_number = $number * $bar_width;
 </div>
 </div>
 </div>
-<?php include("footer.php"); ?>
+
+<?php include("functions/footer_man.php"); ?>
+
 <div id="fansite-menu" class="ui-fansite"></div><div id="menu-container"></div><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 6; top: 0px; left: 0px; display: none; "></ul></body>
 </html>

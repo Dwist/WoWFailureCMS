@@ -1,22 +1,28 @@
 = WoWFailure Project -- What has to be Done?! =
 
 1) DONE
-2) Recheck the missing Functions from the Account Management.
-3) Finish the new Registration Page.
+2) DONE
+3) DONE
 4) Make a Vote Panel .    <-- =Intergrated= -->
 5) Make a Donation Panel. <-- =Intergrated= -->
-6) I need to think better, to find missing Functions. :P
+6) DONE
 7) We need to add a Translation System, Style and Function are working correctly.
-8) Fix and Create the Character View System.
-9) Create the SQL for the Full Support of the Website. (For the account Management)
-10) Make the invisible slideshow at the footer.
-11) Add the COntact Info and Recruit a Friend Module.
+8) Fix and Create the Character View System. (On it's way)
+9) DONE
+10) Make the invisible slideshow at the footer. (Will try)
+11) DONE
+12) Character Transfer
+13) Name Change
+14) Faction Change
+15) Appearance Change
+16) Race Change
 
 # --------------------------------------------------------------
 # |CMS:                                  |    WOWFailureCMS    |
 # |Original:                             |http://eu.battle.net |
 # --------------------------------------------------------------
-# |Database version:                             |    0.0.1    |
+# |Database version:                             |    0.1.1    |
+# |Website Version:                              |    0.2.0    |
 # |Release Date:                                 | 2010-05-17  |
 # |Latest Update:                                | 2011-10-17  |
 # ----------------------------TEAM------------------------------
