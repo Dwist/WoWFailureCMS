@@ -156,7 +156,7 @@ JavaScript must be enabled to use this site.
 <a href="">Donate / Buy Subscription</a>
 </li>
 <li class="change-payment-method">
-<a href="">Vote and Get Rewarded</a>
+<a href="vote.php">Vote and Get Rewarded</a>
 </li>
 <li class="add-game-card">
 <a href="change-password.php">Change your Password</a>

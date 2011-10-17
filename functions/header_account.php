@@ -27,12 +27,12 @@
 <span></span>
 <div class="flyout-menu" id="games-menu" style="display: none">
 <ul>
-<li><a href="">Add or Upgrade a Game</a></li>
-<li><a href="">Buy Digital Games</a></li>
-<li><a href="">Merge a World of Warcraft Account</a></li>
+<li><a href="vote.php">Vote Panel</a></li>
+<li><a href="">Donation Panel</a></li>
+<li><a href="">Refer an Account</a></li>
 <li><a href="game_client.php">Download Game Clients</a></li>
-<li><a href="">Beta Profile Settings</a></li>
-<li><a href="">Item Code Redemption</a></li>
+<li><a href="">Beta Settings</a></li>
+<li><a href="">Item Code Redemption for V.i.P</a></li>
 </ul>
 </div>
 </li>

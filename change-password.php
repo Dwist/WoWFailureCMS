@@ -55,7 +55,6 @@ _gaq.push(['_trackPageLoadTime']);
 <div id="layout-top">
 <div class="wrapper">
 <div id="header">
-<li class="active">
 <?php include("functions/header_account.php"); ?>
 <?php include("functions/footer_man_nav.php"); ?>
 </div>
