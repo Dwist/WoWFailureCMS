@@ -1,6 +1,6 @@
 <?php
 include("configs.php");
-$page_cat = "account";
+$page_cat = "settings";
 ?>
 <?php
 include("functions/configs.php");
@@ -58,7 +58,8 @@ _gaq.push(['_trackPageLoadTime']);
 <div id="layout-top">
 <div class="wrapper">
 <div id="header">
-<?php include("functions/navigation.php"); ?>
+<li class="active">
+<?php include("functions/header_account.php"); ?>
 <?php include("functions/footer_man_nav.php"); ?>
 </div>
 <div id="layout-middle">
