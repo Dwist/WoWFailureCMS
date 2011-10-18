@@ -122,7 +122,7 @@ $page_cat = "home";
 							?>
 							<span class="clear"></span>
 						</div>
-  
+						<!-- DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU ARE DOING! -->
 						<div id="news-updates">
 							<?php
 							
@@ -183,9 +183,12 @@ $page_cat = "home";
 					<!-- Right Panel -->
 					<div id="right" class="ajax-update">
 					<div id="sidebar-marketing" class="sidebar-module">
+					<!-- DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU ARE DOING! -->
+					<!-- DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU ARE DOING! -->
 				<div class="bnet-offer">
+				
 				<div class="sidebar-title"><h3 class="title-bnet-ads">Promo Advertisement</h3></div>
-				<!--  -->
+				<!-- DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU ARE DOING! -->
 				<div class="bnet-offer-bg">
 				<a href="" target="_blank" id="vote" class="bnet-offer-image" onclick="">
 				<img src="wow/static/images/sidebar/Share/vote.jpg" width="300" height="250" alt=""/>
@@ -194,7 +197,38 @@ $page_cat = "home";
 						</div>
 						</div>
 						<div id="sidebar-marketing" class="sidebar-module">
-						<div class="sidebar-title"><h3 class="title-bnet-ads">Server Uptime</h3></div>
+						<div class="sidebar-title">
+						<h3 class="title-bnet-ads">Server Information: 
+						<?php
+						require_once("configs.php");
+						if(realm_status($serveraddress, $serverport) === false)
+						{
+						echo                      "<font color=red>Offline</font>";
+						}
+						elseif(realm_status($serveraddress, $serverport) === true)
+						{
+						echo "<font color=#00FF00>Online</font>";
+						}
+						else
+						{
+						echo "<font color=yellow>Unavailable</font>";
+						}
+						function realm_status($host, $port)
+						{
+						error_reporting(0);
+						$etat = fsockopen($host,$port,$errno,$errstr,3);
+						if(!$etat)
+						{
+						return false;
+						}
+						else
+						{
+						return true;
+						}
+						}
+						?>
+						</h3></div>
+						<span class="clear"><!-- --></span>
 						<?php
 						require_once("configs.php");
 
@@ -213,8 +247,135 @@ $page_cat = "home";
 						else { 
 						$uptime =  round(($uptime_results['uptime'] / 60),2)." Min";
 						}
-						echo "<font color='#00FF00'>Uptime:</font> <font color='#FF0000'>$uptime</font> <br>";
+						echo "<font color='#00FF00'><b>Uptime :</b></font> <span class='date'>$uptime</span> <br>";
 						?>
+						<div class="sidebar-module" id="sidebar">
+						  Realmlist : <span class="date">Set Realmlist your_realmlist</span><br />
+						  Patch Version : <span class="date">4.x.x</span><br />
+						  Accounts : <span class="date">
+						  <?php
+						require_once("configs.php");
+
+						$conn = mysql_connect($serveraddress, $serveruser, $serverpass) or die(mysql_error());
+						mysql_select_db($server_adb, $conn) or die(mysql_error());
+
+						// Account Selection
+						$acct_sql = "SELECT COUNT(*) FROM account";
+						$acct_sqlquery = mysql_query($acct_sql) or die(mysql_error());
+						$acc = mysql_result($acct_sqlquery,0,0);
+
+						echo ("<font color='#FF0000'>$acc</font>");
+						mysql_close($conn);
+						?>
+						Accounts Registered</span><br />
+						Characters : <span class="date"><?php
+						require_once("configs.php");
+
+						$conn = mysql_connect($serveraddress, $serveruser, $serverpass) or die(mysql_error());
+						mysql_select_db($server_cdb, $conn) or die(mysql_error());
+
+						// Character select
+						$sql = "SELECT COUNT(*) FROM characters";
+						$sqlquery = mysql_query($sql) or die(mysql_error());
+						$char = mysql_result($sqlquery,0,0);
+
+						echo ("<font color='#FF0000'>$char</font>");
+
+						mysql_close($conn);
+						?> Total Characters</span><br />
+						  
+						</div>
+						<span class="clear"><!-- --></span>
+						<center><?php
+						require_once("configs.php");
+
+						$bar_width = "273px";
+						$bar_height = "20px";
+						$ally_img = "wow/static/images/services/status/ally.png";
+						$horde_img = "wow/static/images/services/status/horde.png";
+						//Show percent online (true = yes, false = no)
+						$show_percent = true; 
+
+						$alliance = array("1","3","4","7","11");
+						$horde = array("2","5","6","8","10");
+
+						define("QFAIL","Unable to run query.");
+						define("CFAIL","Database connection failed! Check your settings!");
+						define("DFAIL","Unable to select database.");
+
+						$conn = @mysql_connect($serveraddress,$serveruser,$serverpass) or die(mysql_error());
+						if(!$conn)
+							die(CFAIL);
+							
+						function getPlayers($server_cdb,$conn) {
+							$db = @mysql_select_db($server_cdb,$conn);
+							if(!$db) {
+								die(DFAIL);
+							}
+							$query = @mysql_query("SELECT online FROM characters WHERE online = '1'");
+							if(!$query) {
+								die(QFAIL);
+							}
+							return @mysql_num_rows($query);
+						}
+
+						function doFaction($server_cdb,$conn,$a) {
+							$db = @mysql_select_db($server_cdb,$conn);
+							if(!$db) {
+								die(DFAIL);
+							}
+							$query = @mysql_query("SELECT race FROM characters WHERE online = '1'");
+							if(!$query) {
+								die(QFAIL);
+							}
+							$i = 0;
+							while($r = @mysql_fetch_array($query)) {
+								$race = $r['race'];
+								if(in_array($race,$a)) {
+									$i++;
+								}
+							}
+							return $i;
+						}
+
+						function percent($a,$t) {
+							$count1 = $a / $t;
+							$count2 = $count1 * 100;
+							$count = number_format($count2, 0);
+							return $count;
+						}
+
+						function barWidth($a,$b,$t) {
+							if(($a == 0) && ($b == 0)) {
+								$count2 = "136.5";
+							}
+							else {
+								$count1 = $a / $b;
+								$count2 = $count1 * $t;
+							}
+							return $count2;
+						}
+
+						$p = @getPlayers($server_cdb,$conn);
+						$a = @doFaction($server_cdb,$conn,$alliance);
+						$h = @doFaction($server_cdb,$conn,$horde);
+						$ap = @percent($a,$p);
+						$hp = @percent($h,$p);
+						$b = @barWidth($a,$p,273);
+						$c = @barWidth($h,$p,273);
+						echo "<div style=\"width:" . $bar_width . ";height:" . $bar_height . ";\">
+						<div style=\"float:left;text-align:right;background:url(./" . $ally_img . ");width:" . $b . "px;height:20px;\">";
+						if($show_percent) {
+							echo "<font style=\"color:#FFFFFF;font-weight:bold;\">$ap%</font>";
+						}
+						echo "</div>
+						<div style=\"float:right;text-align:left;background:url(./" . $horde_img . ");background-position:right;width:" . $c . "px;height:20px;\">";
+						if($show_percent) {
+							echo "<font style=\"color:#FFFFFF;font-weight:bold;\">$hp%</font>";
+						}
+						echo "</div>
+						</div>";
+						?></center>
 						</div>
 						<!-- Do not Touch here -->
 						<!-- X -->
