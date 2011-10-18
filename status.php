@@ -45,7 +45,6 @@ _gaq.push(['_trackPageview']);
 //]]>
 </script>
 </head>
-<script type="text/javascript" src="http://cdn1.hikiwake.com/scripts/shared/enable.js?si=10203"></script><script type="text/javascript" onload="" onreadystatechange="" src="http://srchdetect1.predictad.com/scripts/acpro/?MV4xMDIwM15zZWFyY2gtZmllbGR8QHF8QHVpLWF1dG9jb21wbGV0ZS1pbnB1dHxAU2VhcmNoIHRoZSBBcm1vcnksIGZvcnVtcyBhbmQgbW9yZeKApnxAfEBvZmZ8XkdhbWUgLSBXb3JsZCBvZiBXYXJjcmFmdF5eXnNlYXJjaC1mb3JtfEB8QGdldHxAL3dvdy9lbi9zZWFyY2h8QHxAL3dvdy9lbi9zZWFyY2h8Xnx8fF4*"></script><script type="text/javascript" onload="" onreadystatechange="" src="http://cdn1.predictad.com/scripts/acpro/bhocombined.js"></script><style type="text/css" media="screen">div.predictad ul li.selected {background-color:#D5E2FF;border:none;}</style><link class="undefined" style="display: block; " type="text/css" rel="stylesheet" href="http://cdn1.predictad.com/css/skins/mclassic.css" media="screen" /><style type="text/css" media="screen">div.predictad ul li.ad {width:99% !important;}</style></head>
 <body class="en-gb game-index"><div id="predictad_div" class="predictad" style="display: none; left: 788px; top: 104px; width: 321px; "></div>
 
 <div id="wrapper">
@@ -68,7 +67,7 @@ _gaq.push(['_trackPageview']);
 	<span class="clear"><!-- --></span>
 	</div>
 
-	<div id="realm-status">
+	<div id="realm-status">	
 <?php include("functions/status_nav.php"); ?>
 		<div class="filter-toggle">
 			<a href="javascript:;" class="selected" onclick="RealmStatus.filterToggle(this)">
@@ -216,20 +215,17 @@ _gaq.push(['_trackPageview']);
 						</td>
 						<td class="queue" data-raw="false">
 														<!--Bar Graph 1-->
-<?php
-$db_host="localhost";// DB Host
-$db_user="root";// DB Username
-$db_pass="ascent";// DB Password
-$db_db="characters";// Character DB
-$con = mysql_connect("$db_host","$db_user","$db_pass");
+<?php 
+require_once("configs.php");
+$con = mysql_connect("$serveraddress","$serveruser","$serverpass");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-  mysql_select_db("$db_db", $con);
-  //Do not touch from now on.
+  mysql_select_db("$server_cdb", $con);
+  
 $bar_width="100";
-$max_online="500";
+$max_online="5000";
 $border_color="#6cc02c";
 $graph_fill="#2fa4f3";
 $right_border="#6cc02c";
@@ -279,20 +275,17 @@ $total_number = $number * $bar_width;
 						<!-- This is the 2nd (Second) Server on the Status, its for Public Use -->
 						
 						<!--Bar Graph 2-->
-<!-- <?php
-$db_host="localhost";// DB Host
-$db_user="root";// DB Username
-$db_pass="ascent";// DB Password
-$db_db="characters";// Character DB No.2
-$con = mysql_connect("$db_host","$db_user","$db_pass");
+<!-- <?php 
+require_once("configs.php");
+$con = mysql_connect("$serveraddress","$serveruser","$serverpass");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-  mysql_select_db("$db_db", $con);
-  //Do not touch from now on.
+  mysql_select_db("$server_cdb_2", $con);
+  
 $bar_width="100";
-$max_online="500";
+$max_online="1000";
 $border_color="#6cc02c";
 $graph_fill="#2fa4f3";
 $right_border="#6cc02c";
@@ -361,6 +354,6 @@ $total_number = $number * $bar_width;
 </div>
 
 <?php include("functions/footer_man.php"); ?>
-
+<?php include("functions/footer_man_nav.php"); ?>
 <div id="fansite-menu" class="ui-fansite"></div><div id="menu-container"></div><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 6; top: 0px; left: 0px; display: none; "></ul></body>
 </html>
