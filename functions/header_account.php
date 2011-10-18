@@ -23,16 +23,16 @@
 </div>
 </li>
 <li <?php if($page_cat=='gamesncodes') echo'class="active"';?>>
-<a href="#" class="border-3 menu-arrow" onclick="openAccountDropdown(this, 'games'); return false;">Games &amp; Codes</a>
+<a href="#" class="border-3 menu-arrow" onclick="openAccountDropdown(this, 'games'); return false;">Codes &amp; Services</a>
 <span></span>
 <div class="flyout-menu" id="games-menu" style="display: none">
 <ul>
 <li><a href="vote.php">Vote Panel</a></li>
 <li><a href="">Donation Panel</a></li>
-<li><a href="">Refer an Account</a></li>
+<li><a href="">V.i.P Item Switch Panel</a></li>
 <li><a href="game_client.php">Download Game Clients</a></li>
 <li><a href="">Beta Settings</a></li>
-<li><a href="">Item Code Redemption for V.i.P</a></li>
+<li><a href="">V.i.P Code Redemption</a></li>
 </ul>
 </div>
 </li>
@@ -51,6 +51,7 @@
 <li><a href="">Race Change</a></li>
 <li><a href="">Character Transfer</a></li>
 <li><a href="">Appearance Change</a></li>
+<li><a href="">Refer an Account</a></li>
 <li><a href="raf-invite.php">Recruit a Friend</a></li>
 </ul>
 </li>

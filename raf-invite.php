@@ -9,7 +9,6 @@ $page_cat = "security";
 <meta content="false" http-equiv="imagetoolbar" />
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/bam.ico" type="image/x-icon"/>
-<link rel="search" type="application/opensearchdescription+xml" href="http://eu.battle.net/en-gb/data/opensearch" title="Battle.net Search" />
 <link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common.css?v22" />
 <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie.css?v22" /><![endif]-->
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="wow/static/local-common/css/common-ie6.css?v22" /><![endif]-->
@@ -57,7 +56,6 @@ _gaq.push(['_trackPageLoadTime']);
 </script>
 </head>
 <body class="en-gb logged-in">
-
         <div id="layout-top">
             <div class="wrapper">
                 <div id="header">
@@ -67,155 +65,91 @@ _gaq.push(['_trackPageLoadTime']);
             <div class="wrapper">
                 <div id="content">
 	<div class="dashboard service">
-
 		<div class="primary">
-
 			<div class="header">
 	<span class="float-right"><span class="form-req">*</span> Required</span>
     <h2 class="subcategory">Referrals &amp; Rewards</h2>
     <h3 class="headline">Recruit a Friend</h3>
     <a href=""><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft®" width="48" height="48" /></a>
 			</div>
-
 			<div class="service-wrapper">
-
     <p class="service-nav">
-            <a href="">Send Invitations</a>
+            <a href="" class="active">Send Invitations</a>
             <a href="">History/Status</a>
             <a href="">How It Works</a>
             <a href="">Instructions For Recipient</a>
     </p>
-
 	<div class="raf-service-info">
-    You have <a href="">0 friends</a> linked to your account and 19 referrals remaining.
+    You have <a href="">0 friends</a> linked to your account and 20 referrals remaining.
     <ul>
         <li>Level together and faster</li>
         <li>Gain rewards if your friend subscribes</li>
         <li>Get a unique two-person mount</li>
     </ul>
-    <a href="">More details on how it works…</a>
+    <a href="">More details on how it works...</a>
     <div class="sub-section">
-        To recruit friends who used to play, use a <a href="">Scroll of Resurrection</a> instead!
+        You are not allowed to Recruit friends who used to or still play,<br> Use the <a href="">Refer a Friend</a> instead!
     </div>
 	</div>
-
 	<div class="service-form">
-                        Fill in your friend's information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Recruit a Friend invitation <a href="raf-status.html?l=PAP123&amp;r=EU">here</a>.
-
+    Fill in your friend's information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Recruit a Friend invitation <a href="">here</a>.
                 <form method="POST" action="raf-invite.php" id="raf-form">
-
                     <input type="hidden" name="" value=""/>
-                    <input type="hidden" name="" value=""/>
-
-
-	
-
-	
-	
-	
-	
-
-	
+                    <input type="hidden" name="" value=""/>	
 	<div class="form-row required">
-									<label for="name" class="label-full ">
-						<strong>                        Friend's Name:
-</strong>
-						<span class="form-required">*</span>
-					</label>
-				
-    <input type="text" id="name" name="name" value="" class="		input border-5 glow-shadow-2 
-		
-		
-		
-		" maxlength="100" tabindex="1"    />
-
-
-
+	<label for="name" class="label-full ">
+	<strong>Friend's Name:</strong>
+	<span class="form-required">*</span>
+	</label>				
+    <input type="text" id="name" name="name" value="" class="input border-5 glow-shadow-2 " maxlength="100" tabindex="1"    />
 	</div>
-
-
-
-	
-
-	
-	
-	
-	
-
-	
 	<div class="form-row required">
-									<label for="email" class="label-full ">
-						<strong>                            Friend's Email Address:
-</strong>
-						<span class="form-required">*</span>
-					</label>
-				
-    <input type="text" id="email" name="email" value="" class="		input border-5 glow-shadow-2 
-		
-		
-		
-		" maxlength="255" tabindex="2"    />
-
-
-
+	<label for="email" class="label-full ">
+	<strong>Friend's Email Address:</strong>
+	<span class="form-required">*</span>
+	</label>			
+    <input type="text" id="email" name="email" value="" class="input border-5 glow-shadow-2" maxlength="255" tabindex="2"    />
 	</div>
-
-
-
-                        <div class="form-row-raf required">
-                            <label class="label-full">
-                                <strong>Key Type:</strong>
-                                <span class="form-required">*</span>
-                            </label>
-                            <span>
-                                <span class="inline-radio">Russian
-                                    <input type="radio" name="keyLocale" value="RU"   />
-                                </span>
-                                <span class="inline-radio" style="padding-left:20px;">European
-                                    <input type="radio" name="keyLocale" value="EU" checked="true" />
-                                </span>
-                            </span>
-                        </div>
-
-                    <div class="form-row">
-                        <label for="customMessage" class="label-full">
-                            <strong>Custom Message:</strong>
-                            <span class="form-required"></span>
-                        </label> 
-                        <textarea rows="8" cols="30" name="customMessage" class="input border-5 glow-shadow-2" id="customMessage" tabindex="3" maxlength="255">Suggestion: Include your realm, guild, and character name so that your friend can contact you in-game.</textarea>
-                        <p class="special-p">Your friend will need to follow the instructions in the e-mail in order to create the link between your accounts.  <a href="wow/static/raf-instructions.html?l=PAP123&amp;r=EU">View the steps they will take.</a></p>
-                    </div>
-
+	<div class="form-row-raf required">
+    <label class="label-full">
+    <strong>Key Type:</strong>
+    <span class="form-required">*</span>
+    </label>
+    <span>
+    <span class="inline-radio">Russian
+    <input type="radio" name="keyLocale" value="RU"   />
+    </span>
+    <span class="inline-radio" style="padding-left:20px;">European
+    <input type="radio" name="keyLocale" value="EU" checked="true" />
+    </span>
+	<span class="inline-radio" style="padding-left:20px;">American
+    <input type="radio" name="keyLocale" value="US"   />
+    </span>
+    </span>
+    </div>
+        <div class="form-row">
+        <label for="customMessage" class="label-full">
+        <strong>Custom Message:</strong>
+        <span class="form-required"></span>
+        </label> 
+        <textarea rows="8" cols="30" name="customMessage" class="input border-5 glow-shadow-2" id="customMessage" tabindex="3" maxlength="255">Suggestion: Include your realm, guild, and character name so that your friend can contact you in-game.</textarea>
+        <p class="special-p">Your friend will need to follow the instructions in the e-mail in order to create the link between your accounts.  <a href="">View the steps they will take.</a></p>
+        </div>
 	<fieldset class="ui-controls " >
-                        
-
 	<button
 		class="ui-button button1 disabled"
 			type="submit"
 			
 		disabled="disabled"
-		id="submit1"
-		
-		
-		
-		
-		>
+		id="submit1">
 		<span>
 			<span>SEND INVITATION</span>
 		</span>
-	</button>
-
-                        
+	</button>             
 	<a class="ui-cancel "
-		href="wow/static/"
-		
-		
-		
-		>
-		<span>
-Cancel		</span>
+		href="">
+		<span>Cancel</span>
 	</a>
-
 	</fieldset>
 		<script type="text/javascript">
 		//<![CDATA[
@@ -226,26 +160,19 @@ Cancel		</span>
 					});
 		//]]>
 		</script>
-
-                </form>
+        </form>
 	</div>
-
 	<span class="clear"><!-- --></span>
 			</div>
-
 		</div>
 	</div>
-
-				</div>
-            </div>
-        </div>
-
+	</div>
+    </div>
+    </div>
 <div id="layout-bottom">
 <?php include("functions/footer_man.php"); ?>
 </div>
-        </div>
-
-
+</div>
 <script type="text/javascript">
 //<![CDATA[
 var xsToken = 'b213c993-d61d-4957-9141-9da399fd7d54';
