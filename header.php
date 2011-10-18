@@ -1,6 +1,6 @@
 <div id="header">
 		
-	<h1 id="logo"><a href="<?php echo $website['address'];?>/index.php">World of Warcraft</a></h1>
+	<h1 id="logo"></h1>
 	
 	<div class="header-plate-wrapper">
 		<div class="header-plate">
