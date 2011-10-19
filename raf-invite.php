@@ -5,7 +5,7 @@ $page_cat = "security";
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb">
 <head>
-<title><?php echo $website['title']; ?> - Recruit a Friend</title>
+<title><?php echo $website['title']; ?> - Refer a Friend</title>
 <meta content="false" http-equiv="imagetoolbar" />
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
 <link rel="shortcut icon" href="wow/static/local-common/images/favicons/bam.ico" type="image/x-icon"/>
@@ -69,7 +69,7 @@ _gaq.push(['_trackPageLoadTime']);
 			<div class="header">
 	<span class="float-right"><span class="form-req">*</span> Required</span>
     <h2 class="subcategory">Referrals &amp; Rewards</h2>
-    <h3 class="headline">Recruit a Friend</h3>
+    <h3 class="headline">Refer a Friend</h3>
     <a href=""><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft®" width="48" height="48" /></a>
 			</div>
 			<div class="service-wrapper">
@@ -80,7 +80,7 @@ _gaq.push(['_trackPageLoadTime']);
             <a href="">Instructions For Recipient</a>
     </p>
 	<div class="raf-service-info">
-    You have <a href="">0 friends</a> linked to your account and 20 referrals remaining.
+    You have <a href="">0 friends</a> linked to your account and 20 Referrals remaining.
     <ul>
         <li>Level together and faster</li>
         <li>Gain rewards if your friend subscribes</li>
@@ -88,27 +88,134 @@ _gaq.push(['_trackPageLoadTime']);
     </ul>
     <a href="">More details on how it works...</a>
     <div class="sub-section">
-        You are not allowed to Recruit friends who used to or still play,<br> Use the <a href="">Refer a Friend</a> instead!
+        You are not allowed to Refer friends who used to or still play,<br> Use the <a href="">Refer a Friend</a> instead!
     </div>
 	</div>
 	<div class="service-form">
-    Fill in your friend's information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Recruit a Friend invitation <a href="">here</a>.
+    Fill in your friend's information below, along with any custom message you would like to send, and we will send an e-mail containing an invitation to the provided address. You can track the status of each Refer a Friend invitation <a href="">here</a>.
                 <form method="POST" action="raf-invite.php" id="raf-form">
                     <input type="hidden" name="" value=""/>
-                    <input type="hidden" name="" value=""/>	
+                    <input type="hidden" name="" value=""/>
+<?php  
+include("configs.php");
+
+$link = mysql_connect($serveraddress,$serveruser,$serverpass)or die("Could not connect: " . mysql_error());
+mysql_select_db($server_adb) or die(mysql_error());
+mysql_select_db($server_cdb) or die(mysql_error());
+
+/* SQL INJECTION */
+function protect($string){
+    $string = mysql_real_escape_string($string);
+    $string = strip_tags($string);
+    $string = addslashes($string);
+
+    return $string;
+}
+
+function sha_password($user,$pass){
+$user = strtoupper($user);
+$pass = strtoupper($pass);
+ 
+return SHA1($user.':'.$pass);
+}
+
+function random_string($counts){
+$str = "abcdefghijklmnopqrstuvwxyz";//Count 0-25
+for($i=0;$i<$counts;$i++){
+if ($o == 1){
+$output .= rand(0,9);
+$o = 0;
+}else{
+$o++;
+$output .= $str[rand(0,25)];
+}
+}
+return $output;
+}
+$rand = random_string(6);
+
+/* START */
+if(isset($_POST['user'])) 
+{
+
+$username = protect($_POST['user']);
+$password = sha_password($_POST['user'],$_POST['pass']);
+$hero1    = protect($_POST['hero1']);
+$ip = getenv('REMOTE_ADDR');
+  
+  $check_account1  = mysql_query("SELECT * FROM `$server_adb`.`invite_member` WHERE `account` = '$username';") or die(mysql_error());
+	if(mysql_num_rows($check_account1) > 0)
+	{
+	echo '<font color="red">Error : this account allready in database</font>';
+	}
+	else
+	{
+	
+	$check_account2  = mysql_query("SELECT * FROM `$server_adb`.`account` WHERE `username` = '$username' AND `sha_pass_hash` = '$password'") or die(mysql_error());
+	if(mysql_num_rows($check_account2) < 1)
+	{
+	echo '<font color="red">Error : Username and Password not valid</font>';
+	}
+	else
+	{
+	
+	$result1  = mysql_query("SELECT * FROM `$server_cdb`.characters, `$server_adb`.account WHERE `$server_adb`.account.id = `$server_cdb`.characters.account AND `$server_cdb`.characters.name='$hero1' AND `$server_adb`.account.username = '$username';") or die(mysql_error());
+	if(mysql_num_rows($result1) < 1)
+	{
+	echo '<font color="red">This character does not belong to this account</font>';
+	}
+	else
+	{
+	
+  $select_character = mysql_query("SELECT name,guid FROM `$server_cdb`.characters WHERE name='$hero1';");
+  $fetch_char = mysql_fetch_array($select_character);
+  $guid = $fetch_char["guid"];
+  
+  if(mysql_num_rows($select_character) < 1)
+  {
+  echo '<font color="red">Error : Characters Not Found</font>';
+  }
+  else
+  {
+     // Update
+     mysql_query("INSERT INTO `$server_adb`.`invite_member` (`account`,`character`,`inv_code`,`ip`) VALUE ('".$username."','".$guid."','".$rand."','".$ip."')") or die(mysql_error());
+     echo '<font color="yellow">Your Link :</font>  <font color="green">http://www.adictoswow.com/ucp.php?mode=register&i='.$rand.'</font><p></p>';
+     echo '<font color="yellow">code :</font> <font color="green">'.$rand.'</font> keep it';
+  }
+  }
+  }
+  }
+  }
+mysql_close($link);
+?>					
 	<div class="form-row required">
 	<label for="name" class="label-full ">
-	<strong>Friend's Name:</strong>
+	<strong>Your Account Name:</strong>
 	<span class="form-required">*</span>
 	</label>				
-    <input type="text" id="name" name="name" value="" class="input border-5 glow-shadow-2 " maxlength="100" tabindex="1"    />
+    <input type="text" name="user" value='<?php echo strtolower($_SESSION['username']); ?>' id="username" class="input border-5 glow-shadow-2 form-disabled" autocomplete="off" tabindex="1" required="required" disabled="disabled" />
+	</div>
+	<div class="form-row required">
+	<label for="email" class="label-full ">
+	<strong>Your Password:</strong>
+	<span class="form-required">*</span>
+	</label>			
+    <input type="password" id="email" name="pass" value="" class="input border-5 glow-shadow-2" maxlength="255" tabindex="2"    />
 	</div>
 	<div class="form-row required">
 	<label for="email" class="label-full ">
 	<strong>Friend's Email Address:</strong>
 	<span class="form-required">*</span>
 	</label>			
-    <input type="text" id="email" name="email" value="" class="input border-5 glow-shadow-2" maxlength="255" tabindex="2"    />
+    <input type="text" id="email" name="email" value="" class="input border-5 glow-shadow-2 form-disabled" maxlength="255" tabindex="2"  disabled="disabled"  />
+	* Function Unavailable.
+	</div>
+	<div class="form-row required">
+	<label for="email" class="label-full ">
+	<strong>Your Character:</strong>
+	<span class="form-required">*</span>
+	</label>			
+    <input type="text" id="email" name="hero1" value="" class="input border-5 glow-shadow-2" maxlength="255" tabindex="2"    />
 	</div>
 	<div class="form-row-raf required">
     <label class="label-full">
@@ -127,6 +234,21 @@ _gaq.push(['_trackPageLoadTime']);
     </span>
     </span>
     </div>
+	<div class="form-row-raf required">
+    <label class="label-full">
+    <strong>Method:</strong>
+    <span class="form-required">*</span>
+    </label>
+    <span>
+    <span class="inline-radio" >Manual
+    <input type="radio" name="keyLocale" value="manual" checked="true" />
+    </span>
+	<span class="inline-radio" style="padding-left:20px;">Automatic
+    <input type="radio" name="keyLocale" value="auto" class="form-disabled" disabled="disabled" />
+    </span>
+    </span>
+    </div>
+	<p class="special-p">Manual Version is available right now. Automatic Method will be coming in the near future. Stay Tuned at: <a href="https://github.com/Strawberry-Pr0jcts/WoWFailureCMS/commits/">WoWFailureCMS</a> for any updates.</p>
         <div class="form-row">
         <label for="customMessage" class="label-full">
         <strong>Custom Message:</strong>
@@ -139,7 +261,7 @@ _gaq.push(['_trackPageLoadTime']);
 	<button
 		class="ui-button button1 disabled"
 			type="submit"
-			
+			name="submit"
 		disabled="disabled"
 		id="submit1">
 		<span>

@@ -282,7 +282,7 @@ $page_cat = "home";
 						echo ("<font color='#FF0000'>$char</font>");
 
 						mysql_close($conn);
-						?> Total Characters</span><br />
+						?> Characters Created</span><br />
 						  
 						</div>
 						<span class="clear"><!-- --></span>

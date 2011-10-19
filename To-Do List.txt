@@ -16,6 +16,7 @@
 14) Faction Change
 15) Appearance Change
 16) Race Change
+17) Finish the Refer a Friend
 
 # --------------------------------------------------------------
 # |CMS:                                  |    WOWFailureCMS    |
@@ -24,7 +25,7 @@
 # |Database version:                             |    0.1.1    |
 # |Website Version:                              |    0.2.0    |
 # |Release Date:                                 | 2010-05-17  |
-# |Latest Update:                                | 2011-10-17  |
+# |Latest Update:                                | 2011-10-19  |
 # ----------------------------TEAM------------------------------
 # |Members: Apocalipsyz, FailZorD, arnauec, CarlosX,dissaor021,|
 # |hondacrx, Kitiara, Krill156, Lilcrazy, Roberto Roeschmann.  |
