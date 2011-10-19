@@ -1,7 +1,7 @@
 <ul class="tab-menu ">
 	
 				<li>
-					<a href="javascript:;"
+					<a href="status.php"
 					   
 					    class="tab-active">
 					   All Realms
@@ -13,7 +13,7 @@
 					   Top Honor
 					</a>
 					 
-					<a href="top-arena.php"
+					<a href="?top-arena.php"
 					   
 					    class="tab-active">
 					   Top Conquest

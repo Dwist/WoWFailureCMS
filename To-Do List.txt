@@ -3,7 +3,7 @@
 1) DONE
 2) DONE
 3) DONE
-4) Make a Vote Panel .    <-- =Intergrated= -->
+4) DONE
 5) Make a Donation Panel. <-- =Intergrated= -->
 6) DONE
 7) We need to add a Translation System, Style and Function are working correctly.
