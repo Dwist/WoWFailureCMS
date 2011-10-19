@@ -241,10 +241,10 @@ mysql_close($link);
     </label>
     <span>
     <span class="inline-radio" >Manual
-    <input type="radio" name="keyLocale" value="manual" checked="true" />
+    <input type="radio" name="SettingKey" value="manual" checked="true" />
     </span>
 	<span class="inline-radio" style="padding-left:20px;">Automatic
-    <input type="radio" name="keyLocale" value="auto" class="form-disabled" disabled="disabled" />
+    <input type="radio" name="SettingKey" value="auto" class="form-disabled" disabled="disabled" />
     </span>
     </span>
     </div>
