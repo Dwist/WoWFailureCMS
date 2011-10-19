@@ -209,50 +209,99 @@ _gaq.push(['_trackPageview']);
 		<table>
 			<thead>
 				<tr>
-				<?php
-
-
-
-$connect = mysql_connect($serveraddress,$serveruser,$serverpass) OR DIE("'Can't connect with $host"); 
+<?php
+$connect = mysql_connect($serveraddress, $serveruser, $serverpass, $serverport) or die(mysql_error()); 
 mysql_select_db($server_cdb,$connect) or die(mysql_error()); 
-
-$result = mysql_query("SELECT * FROM `characters` ORDER BY `totalKills` DESC LIMIT 0 , 100 ");  
-
+$result = mysql_query("SELECT * FROM `characters` ORDER BY `totalKills` DESC LIMIT 0 , 100 ") or die(mysql_error());
+$numrows = mysql_num_rows($result);
+if($numrows > 0)
 ?>
+<table border="1" width="100%" style="border: 1px solid #c0c0c0;border-collapse:collapse;" align="center">
 <div id="all-realms">
 	<div class="table full-width">
 		<table>
 			<thead>
 				<tr>
-<th><a href="javascript:;" class="sort-link"><span class="arrow">Name</span></a></th>
-<th><a href="javascript:;" class="sort-link"><span class="arrow">Number</span></a></th>
-<th><a href="javascript:;" class="sort-link"><span class="arrow">Level</span></a></th>
-<th><a href="javascript:;" class="sort-link"><span class="arrow">Honor</span></a></th>
-<th><a href="javascript:;" class="sort-link"><span class="arrow">Kills</span></a></th>
-    </thead>
-    <tbody>
-                
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Number</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Name</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Level</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Top Honor</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Total Kills</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Class</span></a></th>
+					</tr>
+				</thead>
+    <tbody>              
 <?php
 
-while($rows = mysql_fetch_object($result)) 
+while($rows = mysql_fetch_object($result))
+ 
 { 
  $i++; 
  $name = $rows->name; 
  $level = $rows->level;  
  $Total_Kills = $rows->totalKills;
  $Total_Honor = $rows->totalHonorPoints;
- 
+ while($rows = mysql_fetch_array($result))
+ $cclass = $rows['class'];
+ if ($cclass == 1)
+ {
+ $class = "<img src='wow/static/images/icons/class/1.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 2)
+ {
+ $class = "<img src='wow/static/images/icons/class/2.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 3)
+ {
+ $class = "<img src='wow/static/images/icons/class/3.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 4)
+ {
+ $class = "<img src='wow/static/images/icons/class/4.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 5)
+ {
+ $class = "<img src='wow/static/images/icons/class/5.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 6)
+ {
+ $class = "<img src='wow/static/images/icons/class/6.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 7)
+ {
+ $class = "<img src='wow/static/images/icons/class/7.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 8)
+ {
+ $class = "<img src='wow/static/images/icons/class/8.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 9)
+ {
+ $class = "<img src='wow/static/images/icons/class/9.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 11)
+ {
+ $class = "<img src='wow/static/images/icons/class/10.gif' width='18' height='18'/>";
+ }
     echo " 
- <tr>
- <td><i>",$name,"</i></td>
- <td><center>",$i,"</center></td>
+	<tr>
+ <td style=''><center>",$i,"</center></td>
+ <td><center>",$name,"</center></td>
  <td><center>",$level,"</center></td>
  <td><center>",$Total_Honor,"</center></td>
  <td><center>",$Total_Kills,"</center></td>
- </tr>"; 
-} 
+ <td><center>",$class,"</center></td>
+  </tr>
+  
+  "; 
 
+
+
+echo '</tr>';
+echo"</table><br/>";
+} 
 ?>
+
 			<tbody>
 			
 					<tr class="row1">
