@@ -377,11 +377,49 @@ $page_cat = "home";
 						</div>";
 						?></center>
 						</div>
+						<!--<div class="sidebar-module " id="sidebar-friends" style="">
+						<div class="sidebar-title">
+						<h3 class="category title-friends">						
+						<a href="">
+						Guild Loot News
+						<span class="sidebar-count">(Number)</span>
+							</a>
+							</h3>
+							</div>
+							<div class="sidebar-content">
+							<div id="news-list">
+							<ul class="activity-feed activity-feed-wide">
+							<li data-id="15421221" class="item-looted first">
+							<dl>
+							<dd>
+							<a href="" class="color-q4">
+							<span class="icon-frame frame-18 " style="background-image: url(http://eu.media.blizzard.com/wow/icons/18/inv_sword_07.jpg);">
+							</span>
+							</a>
+							<a href="">Crankboy</a> obtained <a href="http://www.wowhead.com/item=71325" class="color-q4">The Horseman's Sinister Saber</a>.
+							</dd>
+							<dt>in 1 hour</dt>
+							</dl>
+							</li>
+							<li data-id="15420371" class="item-purchased">
+							<dl>
+							<dd>
+							<a href="" class="color-q4">
+							<span class="icon-frame frame-18 " style="background-image: url(http://eu.media.blizzard.com/wow/icons/18/inv_gauntlets_cloth_pvpmage_c_01.jpg);">
+							</span>
+							</a>
+							<a href="">Dragonz</a> purchased item <a href="http://www.wowhead.com/item=70657" class="color-q4">Vicious Gladiator's Silk Handguards</a>.
+							</dd>
+							<dt>in 1 hour</dt>
+							</dl>
+							</li>
+							</div>
+							</div>
+							</div>-->
 						<!-- Do not Touch here -->
 						<!-- X -->
 						<div class="sidebar-module" id="sidebar-bnet-ads">
 							<div class="sidebar-title"><h3 class="title-bnet-ads">Recommended Services</h3></div>
-							
 							<div class="sidebar-content">
 							<div class="bnet-offer">
 							<!-- Sidebar No.1 of Services-->

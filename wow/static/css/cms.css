@@ -320,6 +320,7 @@ div.forum-options a.active { color:#fff; font-weight: bold; }
 #sidebar-auctions a:hover strong { text-decoration: underline; }
 #sidebar-auctions .sidebar-cell { font-weight: bold; }
 #sidebar-auctions .sidebar-cell ul { padding-left: 10px; font-weight: normal; }
+
 /* Events */
 .sidebar-events h4 {font-weight:normal; padding: 7px 0 4px; font-size:12px;}
 .sidebar-events li.player-event { cursor: help; }
