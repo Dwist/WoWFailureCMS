@@ -12,10 +12,11 @@ $server_adb = "auth"; //Your account database
 $server_cdb = "characters"; //Your characters database
 $server_cdb_2 = "characters2"; //Your characters database
 $server_wdb = "world"; //Your world database
+$server_wdb_2 = "world"; //Your world database
 
 $website['title'] = "WoWFailureCMS";
 $website['address'] = "http://www.wowfailure.com"; // 'http://url/foldername/' or 'http://url/'
-$website['root'] = "/WoWFailureCMS/"; // '/' <- for root and '/foldername/' <- for any folder
+$website['root'] = "/"; // '/' <- for root and '/foldername/' <- for any folder
 //Initialize Lang Files
 include("lang/eng.php");
 

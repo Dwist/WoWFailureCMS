@@ -67,21 +67,21 @@ try { document.execCommand('BackgroundImageCache', false, true) } catch(e) {}
 					</div>
 					
 					<div class="main-services">
-					<a href="#" class="main-services-banner left-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-1.jpg');">
+					<a href="account_man.php" class="main-services-banner left-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-1.jpg');">
 						<span class="banner-title">Account Management</span>
 						<span class="banner-desc">Review and change your account security options, use additional account services, and more.</span>
 					</a>
-					<a href="#" class="main-services-banner right-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-2.jpg');">
-						<span class="banner-title">Support</span>
-						<span class="banner-desc">Find information, assistance, and solutions for common issues on our support website</span>
+					<a href="ban-list.php" class="main-services-banner right-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-2.jpg');">
+						<span class="banner-title">Ban List</span>
+						<span class="banner-desc">Find which players have been Banned from the server. Beware of what you will see!</span>
 					</a>
 					<a href="#" class="main-services-banner left-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-3.jpg');">
-						<span class="banner-title">Remote</span>
-						<span class="banner-desc">Access the auction house via this website. Place bids and sell your items!</span>
-					</a>
-					<a href="#" class="main-services-banner right-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-4.jpg');">
 						<span class="banner-title">Armory</span>
-						<span class="banner-desc">Browse the <?php echo $website['title']; ?> Armory.</span>
+						<span class="banner-desc">Trying to find your Character, or a friend's? Browse the <?php echo $website['title']; ?> Armory.</span>
+					</a>
+					<a href="raf-invite.php" class="main-services-banner right-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-4.jpg');">
+						<span class="banner-title">Recruit a Friend</span>
+						<span class="banner-desc">Earn epic rewards for each player you invite to play at <?php echo $website['title']; ?>.</span>
 					</a>
 					<a href="#" class="main-services-banner left-bnr" style="background-image:url('wow/static/images/services/thumbnails/thumb-main-services-5.jpg');">
 						<span class="banner-title">Donation Shop</span>
@@ -104,24 +104,21 @@ try { document.execCommand('BackgroundImageCache', false, true) } catch(e) {}
 									<span>Account Services</span>
 								</div>
 								<ul>
-										<li><a href="javascript:;" class="c1-l1"><span>Account Settings</span></a></li>
-										<li><a href="javascript:;" class="c1-l2"><span>Account Security</span></a></li>
-										
+								<li><a href="ban-list.php" class="c3-l6"><span>Ban List</span></a></li>
+								<li><a href="javascript:;" class="c1-l1"><span>Account Settings</span></a></li>
+								<li><a href="javascript:;" class="c1-l2"><span>Account Security</span></a></li>
 										<!--<li><a href="javascript:;" class="c1-l3"><span>Add an Authenticator</span></a></li>
 										<li><a href="javascript:;" class="c1-l4"><span>Authenticator FAQ</span></a></li>-->
 								</ul>					
 							</div>
 							<div class="sub-services-section">
 								<div class="sub-title">
-									<span>Website Options</span>
+									<span>OTHER SERVICES AND PROMOTIONS</span>
 								</div>
 								<ul>
-										<li><a href="javascript:;" class="c2-l1"><span>Change Website Theme</span></a></li>
-										<li><a href="services.php?ref=avatar" class="c4-20"><span>Change Avatar</span></a></li>
-										<li><a href="javascript:;" class="c2-l2"><span>Request GM Application</span></a></li>
-										<li><a href="javascript:;" class="c2-l3"><span>Request GM Trial</span></a></li>
-										<li><a href="javascript:;" class="c2-l4"><span>Download WoW Client</span></a></li>
-										<!--<li><a href="javascript:;" class="c2-l5"><span>Download Language Pack</span></a></li>-->
+										<li><a href="javascript:;" class="c4-l1"><span>Recruit-A-Friend</span></a></li>
+										<!--<li><a href="javascript:;" class="c4-l2"><span>World of Warcraft Magazine</span></a></li>-->
+										<li><a href="javascript:;" class="c4-l3"><span>Refer-A-Friend</span></a></li>
 								</ul>					
 							</div>
 							<div class="sub-services-section">
@@ -140,12 +137,15 @@ try { document.execCommand('BackgroundImageCache', false, true) } catch(e) {}
 							</div>
 							<div class="sub-services-section">
 								<div class="sub-title">
-									<span>OTHER SERVICES AND PROMOTIONS</span>
+									<span>Website Options</span>
 								</div>
 								<ul>
-										<li><a href="javascript:;" class="c4-l1"><span>Recruit-A-Friend</span></a></li>
-										<!--<li><a href="javascript:;" class="c4-l2"><span>World of Warcraft Magazine</span></a></li>
-										<li><a href="javascript:;" class="c4-l3"><span>Scroll of Resurrection</span></a></li>-->
+								<li><a href="javascript:;" class="c2-l1"><span>Change Website Theme</span></a></li>
+								<li><a href="services.php?ref=avatar" class="c4-20"><span>Change Avatar</span></a></li>
+								<li><a href="javascript:;" class="c2-l2"><span>Request GM Application</span></a></li>
+								<li><a href="javascript:;" class="c2-l3"><span>Request GM Trial</span></a></li>
+								<li><a href="game_client.php" class="c2-l4"><span>Download WoW Client</span></a></li>
+										<!--<li><a href="javascript:;" class="c2-l5"><span>Download Language Pack</span></a></li>-->
 								</ul>					
 							</div>
 					</div>	

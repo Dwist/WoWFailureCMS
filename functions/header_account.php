@@ -36,10 +36,7 @@
 </ul>
 </div>
 </li>
-<li <?php if($page_cat=='transaction') echo'class="active"';?>>
-<a href="" class="border-3">Transaction History</a>
-<span></span>
-</li>
+
 <li <?php if($page_cat=='security') echo'class="active"';?>>
 <a href="" class="border-3 menu-arrow" onclick="openAccountDropdown(this, 'player'); return false;">Player Options</a>
 <span></span>
@@ -54,6 +51,10 @@
 <li><a href="">Refer an Account</a></li>
 <li><a href="raf-invite.php">Recruit a Friend</a></li>
 </ul>
+</li>
+<li <?php if($page_cat=='transaction') echo'class="active"';?>>
+<a href="index.php" class="border-3">Return to Website</a>
+<span></span>
 </li>
 </ul>
 <span class="clear"><!-- --></span>
