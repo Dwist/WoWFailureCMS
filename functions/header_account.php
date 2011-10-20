@@ -48,8 +48,8 @@
 <li><a href="">Race Change</a></li>
 <li><a href="">Character Transfer</a></li>
 <li><a href="">Appearance Change</a></li>
-<li><a href="">Refer an Account</a></li>
-<li><a href="raf-invite.php">Recruit a Friend</a></li>
+<li><a href="raf-invite.php">Refer an Account</a></li>
+<li><a href="">Recruit a Friend</a></li>
 </ul>
 </li>
 <li <?php if($page_cat=='transaction') echo'class="active"';?>>
