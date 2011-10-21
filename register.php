@@ -80,8 +80,8 @@ _gaq.push(['_trackPageLoadTime']);
 			<?php
 						  if(!isset($_SESSION['username'])){
 						  if(isset($_POST['reg'])){
-						  $accountName = mysql_real_escape_string(stripslashes($_POST['accountName']));
-						  $accountPass = stripslashes($_POST['accountPass']);
+						  $accountName = mysql_real_escape_string($_POST['accountName']);
+						  $accountPass = mysql_real_escape_string($_POST['accountPass']);
 						  $accountEmail = mysql_real_escape_string(stripslashes($_POST['accountEmail']));
 						  mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
 						  $check_query = mysql_query("SELECT * FROM account WHERE username = '".$accountName."'");
@@ -114,14 +114,11 @@ _gaq.push(['_trackPageLoadTime']);
                 }
                 echo '</div>';
                 echo '<meta http-equiv="refresh" content="2"';
-              }else{
-				function sha_password($user,$pass){
-					$user = strtoupper($user);
-					$pass = strtoupper($pass);
-					return SHA1($user.':'.$pass);
-				}
-				$sha_pass_hash = strtoupper(sha_password($accountName,$accountPass));
-				$ip = intval($_SERVER['REMOTE_ADDR']);
+              }
+              else
+              {
+	      
+              $ip = intval($_SERVER['REMOTE_ADDR']);
                 
 				
 				mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
@@ -130,7 +127,7 @@ _gaq.push(['_trackPageLoadTime']);
           
                 if ($accinfo == 0)
                 {
-                    $register_logon = mysql_query("INSERT INTO account (username,sha_pass_hash,email,last_ip,expansion) VALUES ('".strtoupper($accountName)."','".mysql_real_escape_string($sha_pass_hash)."','".$accountEmail."','".$ip."','2')")or die(mysql_error());
+                    $register_logon = mysql_query("INSERT INTO account (username,sha_pass_hash,email,last_ip,expansion) VALUES (UPPER('".$accountName."'), SHA1(CONCAT(UPPER('".$accountName."'),':',UPPER('".$accountPass."'))),'".$accountEmail."','".$ip."','2')")or die(mysql_error());
               
                     mysql_select_db($server_db,$connection_setup)or die(mysql_error());
                     $register_cms = mysql_query("INSERT INTO users(id) VALUES ('".mysql_real_escape_string($accinfo['id'])."')");
@@ -176,7 +173,7 @@ Country of Residence:
 <option value="RUS">Russian Federation</option>
 </optgroup>
 <option value="AFG">Afghanistan</option>
-<option value="ALA">Ã…land Islands</option>
+<option value="ALA">Åland Islands</option>
 <option value="ALB">Albania</option>
 <option value="DZA">Algeria</option>
 <option value="ASM">American Samoa</option>
@@ -352,7 +349,7 @@ Country of Residence:
 <option value="REU">Reunion</option>
 <option value="ROU">Romania</option>
 <option value="RWA">Rwanda</option>
-<option value="BLM">Saint BarthÃ©lemy</option>
+<option value="BLM">Saint Barthélemy</option>
 <option value="SHN">Saint Helena</option>
 <option value="KNA">Saint Kitts And Nevis</option>
 <option value="LCA">Saint Lucia</option>
@@ -1014,10 +1011,10 @@ urlPrompt: 'URL Address:'
 },
 ui: {
 viewInGallery: 'View in gallery',
-loading: 'Loadingâ€¦',
+loading: 'Loading…',
 unexpectedError: 'An error has occurred',
-fansiteFind: 'Find this onâ€¦',
-fansiteFindType: 'Find {0} onâ€¦',
+fansiteFind: 'Find this on…',
+fansiteFindType: 'Find {0} on…',
 fansiteNone: 'No fansites available.'
 },
 grammar: {
