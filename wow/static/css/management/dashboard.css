@@ -33,6 +33,7 @@
 .dashboard .section.account-details { width: 228px; padding-right: 16px; }
 .dashboard.account-banned .section.account-details { width: 468px; }
 .dashboard .section.available-actions { width: 240px; padding-right: 16px; padding-bottom: 140px; z-index: 2; }
+.dashboard .section.available-actions-lightweight { width: 240px; padding-right: 16px; z-index: 2; }
 .dashboard .section.ban-notice,
 .dashboard .section.upgrade-option,
 .dashboard .section.game-notice { overflow: visible; padding:0; position: absolute; right: 13px; bottom: 13px; z-index: 2; -moz-user-select: none; -webkit-user-select: none; user-select: none; }
@@ -57,6 +58,7 @@
 .account-details dl dd strong.active,
 .account-details dl dd strong.unlimited,
 .account-details dl dd strong.guest-pass { color: #2c6200; }
+.account-details dl dd.chargeback,
 .account-details dl dd strong.frozen,
 .account-details dl dd strong.banned,
 .account-details dl dd strong.locked { color: #ac0000; }
@@ -71,6 +73,12 @@
 .account-details dl dd strong.suspended,
 .account-details dl dd strong.unsubscribed { color: #cd6001; }
 
+.account-details dl dd .guest-pass em { display: inline-block; height: 16px; line-height: 16px; vertical-align: top; }
+.account-details dl dd .guest-pass a { display: inline-block; vertical-align: top; }
+.account-details dl dd .game-time { color: #727272; }
+
+.account-details dl dd .status-tooltip { display: inline-block; vertical-align: top; cursor: default; height: 16px; width: 16px; overflow: hidden; }
+
 /* extended license information */
 .account-details dl dd span.account-history { display: inline-block; cursor: pointer; padding-right: 16px; background: url("../../images/icons/plus-minus.png") no-repeat right 0; }
 .account-details dl dd span.account-history:hover { background-position: right -100px; }
@@ -81,8 +89,10 @@
 
 /* manage game time */
 .game-time { font-size: 11px; }
-.game-time li { margin: 0 0 1em 0; list-style: none; line-height: 1.5; }
+.game-time li { margin: 0 0 1em 0; list-style: none; line-height: 16px; }
 .game-time li a { display: inline-block; padding: 0 0 0 22px; line-height: 16px; height: 16px; background: url("../../images/dashboard/icons/account-actions.png") no-repeat 0 0; }
+.game-time li img { display: inline-block; vertical-align: middle; line-height: 16px; height: 16px; overflow: hidden; }
+.game-time li.disabled a { color: #86939d; cursor: default; }
 .game-time li.raf-status a { background-position: 0 0; }
 .game-time li.buy-time a,
 .game-time li.change-payment-method a { background-position: 0 -16px; }
@@ -150,6 +160,19 @@
 .download.mac a.unavailable-download:focus .icon,
 .download.mac a.unavailable-download:active .icon { background-position: -64px -32px; }
 
+.download.pdf a .icon { background-position: -96px 0; }
+.download.pdf a:hover .icon,
+.download.pdf a:focus .icon
+.download.pdf a:active .icon { background-position: -96px -32px; }
+.download.pdf a.disabled-download .icon,
+.download.pdf a.disabled-download:hover .icon,
+.download.pdf a.disabled-download:focus .icon,
+.download.pdf a.disabled-download:active .icon { background-position: -96px -64px; }
+.download.pdf a.unavailable-download .icon { background-position: -64px 0; }
+.download.pdf a.unavailable-download:hover .icon,
+.download.pdf a.unavailable-download:focus .icon,
+.download.pdf a.unavailable-download:active .icon { background-position: -64px -32px; }
+
 .download.win a.disabled-download,
 .download.win a.unavailable-download,
 .download.mac a.disabled-download,
@@ -206,12 +229,12 @@
 .upgrade-option .game-upgrade ul li.preorder-button a:hover,
 .upgrade-option .game-upgrade ul li.preorder-button a:focus { background: url("../../images/account/lobby/add-game-button.png") repeat-x scroll 0 -40px #4A8102; }
 
-.upgrade-available { cursor: help; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/upgrade/upgrade-available.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
+.upgrade-available { cursor: default; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/upgrade/upgrade-available.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
 .upgrade-pending { cursor: default; display: block; width: 194px; padding-top: 6px; position: absolute; right: 24px; bottom: 14px; text-align: center; background: url("../../images/dashboard/upgrade/upgrade-pending-arrow.png") no-repeat 54px top; }
 .upgrade-pending .upgrade-message { display: block; padding: 8px 12px; background-color: #fff; background-color: rgba(255,255,255,.85); color: #4a4a4a; }
-.active-trial { cursor: help; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/trial/trial.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
-.trial-time-remaining { cursor: help; display: block; width: 97px; padding-right: 5px; height: 137px; overflow: hidden; background: url("../../images/dashboard/trial/trial-blank.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; text-align: center; line-height: 100px; font-size: 24px; font-weight: bold; color: #fff; letter-spacing: -.1em; }
-.chargeback-available { cursor: help; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/chargeback/chargeback-available.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
+.active-trial { cursor: default; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/trial/trial.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
+.trial-time-remaining { cursor: default; display: block; width: 97px; padding-right: 5px; height: 137px; overflow: hidden; background: url("../../images/dashboard/trial/trial-blank.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; text-align: center; line-height: 100px; font-size: 24px; font-weight: bold; color: #fff; letter-spacing: -.1em; }
+.chargeback-available { cursor: default; display: block; width: 102px; height: 137px; overflow: hidden; background: url("../../images/dashboard/chargeback/chargeback-available.png") no-repeat 0 0; position: absolute; right: 0; bottom: 0; }
 
 /* unavailable upgrade */
 .game-upgrade ul.upgrade-options li a.disabled,

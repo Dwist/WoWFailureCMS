@@ -1,9 +1,9 @@
 = WoWFailure Project -- What has to be Done?! =
 
-1) Fix the login in linux (the problem is simple, when the web page read t5he db for password in linux apache servers the web cant recognize the correct format of the password, in windows work perfect but in linux dont recognize)
-if you try to create an account the account will have a incorrect password format, so the problem its a compatibility issue of the web and must be solved as soon as posible. (all tested by icerobert)
+1) Fix the login in linux (the problem is simple, when the web page read the db for password in linux apache servers the web can't recognize the correct format of the password, in windows work perfect but in linux it can not be recognized)
+If you try to create an account the account will have a incorrect password format, so the problem its a compatibility issue of the web and must be solved as soon as posible. (All tested by icerobert)
 2) Make a Donation Panel. <-- =Intergrated= -->
-3) We need to add a Translation System, need some people that can create the lang file for english so devs of the team can create the traslate files (the idea its player can select his main language in the web so he can se the web in his languaje, just like wowhead).
+3) We need to add a Translation System, need some people that can create the lang file for english so devs of the team can create the traslate files (the idea it's that player can select his main language in the web so he can see the web in his language, just like wowhead).
 4) Fix and Create the Character View System. (On it's way)
 5) Make the invisible slideshow at the footer. (Will try)
 6) Character Transfer (need to be worked as a part of donation system)
