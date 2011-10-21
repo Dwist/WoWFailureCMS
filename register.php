@@ -118,7 +118,7 @@ _gaq.push(['_trackPageLoadTime']);
               else
               {
 	      
-              $ip = intval($_SERVER['REMOTE_ADDR']);
+              $ip = getenv("REMOTE_ADDR");
                 
 				
 	         mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
