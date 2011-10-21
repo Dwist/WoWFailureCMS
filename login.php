@@ -39,16 +39,13 @@ include("configs.php");
   
   if(!isset($_SESSION['username'])){
   if(isset($_POST['accountName'])){
-    $accountName = mysql_real_escape_string(stripslashes($_POST['accountName']));
-    $accountPass = mysql_real_escape_string(stripslashes($_POST['password']));
-	function sha_password($user,$pass){
-		$user = strtoupper($user);
-		$pass = strtoupper($pass);
-		return SHA1($user.':'.$pass);
-	}
-	$sha_pass_hash = sha_password($accountName,$accountPass);
-	$db_setup = mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
-    $login_query = mysql_query("SELECT * FROM account WHERE username = '".strtoupper($accountName)."'");
+    $accountName = mysql_real_escape_string($_POST['accountName']);
+    $accountPass = mysql_real_escape_string($_POST['password']);
+
+    $sha_pass_hash = sha1(strtoupper($accountName ) . ":" . strtoupper($accountPass));
+
+    $db_setup = mysql_select_db($server_adb,$connection_setup)or die(mysql_error());
+    $login_query = mysql_query("SELECT * FROM account WHERE username = UPPER('".$accountName."') AND sha_pass_hash = CONCAT('".$sha_pass_hash."')");
     $login = mysql_fetch_assoc($login_query);
     if($login){
       ?>
@@ -62,13 +59,11 @@ include("configs.php");
       <center>
       <h3>Logging In</h3><br />
       <div class="loader"></div>
+      
       <?php
-        if(strtoupper($sha_pass_hash) == $login['sha_pass_hash']){
-          $_SESSION['username']=$accountName;
-          echo '<br /><br /><meta http-equiv="refresh" content="2"/>';
-        }else{
-          echo '<br /><br /><font color="red">Wrong Password</font><meta http-equiv="refresh" content="2"/>';
-        }
+        $_SESSION['username']=$accountName;
+          echo '<meta http-equiv="refresh" content="2"';
+          echo 'Succesfully';
       ?>
       </center>
       <?php
@@ -82,7 +77,7 @@ include("configs.php");
        }
       </style>
       <center>
-      <h3>Invalid Account Name</h3><br />
+      <h3>Wrong Password or Account Name</h3><br />
       <div class="loader"></div>
       <meta http-equiv="refresh" content="2"/>
       </center>
