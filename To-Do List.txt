@@ -1,22 +1,23 @@
 = WoWFailure Project -- What has to be Done?! =
 
-1) DONE
-2) DONE
-3) DONE
-4) DONE
-5) Make a Donation Panel. <-- =Intergrated= -->
-6) DONE
-7) We need to add a Translation System, Style and Function are working correctly.
-8) Fix and Create the Character View System. (On it's way)
-9) DONE
-10) Make the invisible slideshow at the footer. (Will try)
-11) DONE
-12) Character Transfer
-13) Name Change
-14) Faction Change
-15) Appearance Change
-16) Race Change
-17) Finish the Refer a Friend
+1) Fix the login in linux (the problem is simple, when the web page read t5he db for password in linux apache servers the web cant recognize the correct format of the password, in windows work perfect but in linux dont recognize)
+if you try to create an account the account will have a incorrect password format, so the problem its a compatibility issue of the web and must be solved as soon as posible. (all tested by icerobert)
+2) Make a Donation Panel. <-- =Intergrated= -->
+3) We need to add a Translation System, need some people that can create the lang file for english so devs of the team can create the traslate files (the idea its player can select his main language in the web so he can se the web in his languaje, just like wowhead).
+4) Fix and Create the Character View System. (On it's way)
+5) Make the invisible slideshow at the footer. (Will try)
+6) Character Transfer (need to be worked as a part of donation system)
+7) Name Change (need to be worked as a part of donation system)
+8) Faction Change (need to be worked as a part of donation system)
+9) Appearance Change (need to be worked as a part of donation system)
+10) Race Change (finished but need to be worked as a part of donation system)
+11) Finish the Refer and recruit a Friend (this will need core support)
+12) try to work in armory, need a lot of work, we can work in base of shadez armory and integrate to our repo.
+13) delete some options in the web and edit anothers like change website theme or upgrade your account, request gm trial xD
+14) work on forum, we need to fix the things to give gm the moderation permissions for forum and news
+15) fix the submit options in the fan art, wallpapers and general media zone, and add a option to gm can accept the submission before they appear public
+16) fix status functions on the status page, top honor and all other the criterias need to be fixed, and make RealmName will be obtained from Realmlist Table
+17) script the vote shop and make a little db where we can edit and add items to buy for vote points.
 
 # --------------------------------------------------------------
 # |CMS:                                  |    WOWFailureCMS    |
