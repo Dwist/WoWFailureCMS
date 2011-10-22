@@ -300,17 +300,17 @@ Watch exciting eSports matches and in-depth TV shows exploring the competitive s
 <div class="content referrals-rewards" id="referrals-rewards">
 <ul>
 <li class="wow-service raf">
-<a href="raf-invite.php">
+<a href="">
 <span class="icon glow-shadow-3"></span>
 <strong>Recruit a Friend</strong>
 Earn game time, in-game rewards, and more by recruiting your friends.
 </a>
 </li>
 <li class="wow-service resurrection-scroll">
-<a href="">
+<a href="raf-invite.php">
 <span class="icon glow-shadow-3"></span>
-<strong>Scroll of Resurrection</strong>
-Earn game time by recruiting your retired friends.
+<strong>Refer a Friend</strong>
+Get more Friends, to <?php echo $website['title']; ?>.
 </a>
 </li>
 </ul>

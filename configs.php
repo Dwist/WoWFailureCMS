@@ -15,6 +15,8 @@ $server_wdb = "world"; //Your world database
 $server_wdb_2 = "world"; //Your world database
 $charTable = 'characters'; //Your Character Table!!
 $charLimit = '10'; //Max characters to show on the page
+$name_realm1 = "Server_Name"; //Your Realm Name 1
+$name_realm2 = "Server_Name_2"; //Your Realm Name 2
 
 $website['title'] = "WoWFailureCMS";
 $website['address'] = "http://www.wowfailure.com"; // 'http://url/foldername/' or 'http://url/'

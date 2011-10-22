@@ -75,13 +75,13 @@ _gaq.push(['_trackPageLoadTime']);
 <div class="header">
 <h2 class="subcategory">Character Services</h2>
 <h3 class="headline">Race Change</h3>
-<a href="wow/static/management/wow/dashboard.html?accountName=PAP123&amp;region=EU"><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft" width="48" height="48" /></a>
+<a href=""><img src="wow/static/local-common/images/game-icons/wow.png" alt="World of Warcraft" width="48" height="48" /></a>
 </div>
 <div class="service-wrapper">
 <p class="service-nav">
-<a href="wow/static/management/wow/services/prc-select.html?l=PAP123&amp;r=EU" class="active">Service</a>
-<a href="prc-history.html?l=PAP123&amp;r=EU&amp;s=PRC">History/Status</a>
-<a href="wow/static/management/wow/dashboard.html?accountName=PAP123&amp;region=EU">Return to dashboard</a>
+<a href="" class="active">Service</a>
+<a href="">History/Status</a>
+<a href="">Return to dashboard</a>
 </p>
 <div class="service-info">
 <div class="service-tag">
@@ -90,17 +90,17 @@ _gaq.push(['_trackPageLoadTime']);
 <img src="https://eu.battle.net/static-render/eu/hellscream/182/32353974-avatar.jpg?alt=wow/static/images/2d/avatar/4-0.jpg" width="64" height="64" alt="" />
 </div>
 <div class="service-tag-description">
-<span class="character-name caption">Simitis</span>
-<span class="character-class"> level 85 Night Elf Death Knight
+<span class="character-name caption">NAME</span>
+<span class="character-class"> LEVEL_NO RACE CLASS
 </span>
-<span class="character-realm">Hellscream</span>
+<span class="character-realm">REALM_SERVER_NAME</span>
 </div>
 <span class="clear"><!-- --></span>
 </div>
 </div>
 <div class="service-summary">
-<p class="service-price headline">20.00 €</p>
-<a href="http://www.worldofwarcraft.com/info/race-change/index.xml" target="_blank">Race Change table of equivalences</a>
+<p class="service-price headline">20.00 $</p>
+<a href="" target="_blank">Race Change table of equivalences</a>
 </div>
 </div>
 <div class="service-form">
@@ -108,16 +108,16 @@ _gaq.push(['_trackPageLoadTime']);
 <h2 class="caption">CONDITIONS AND DISCLAIMERS</h2>
 <div class="tos-left full-width">
 <ul>
-<li>The race change process is not immediate, and a character will not be available for play while a race change is pending. Under normal conditions the process should take under an hour, but please allow up to several days for a race change to complete.</li>
+<li>The race change process is immediate, your character will be only become available as a new Race to play, only if you are not online. Under normal conditions the process should take less than a minute, but please remember to be offline while you are doing customization.</li>
 <li>You can select a new character race only from those in the same faction that have the character’s class available. You cannot change a characters class.</li>
 <li>A character’s current home city reputation level will switch values with their new home city and their home city racial mounts will convert to those of their new race. Refer to the <a href="http://www.worldofwarcraft.com/info/race-change/index.xml" target="_blank">Race Change Translation Table</a> for more details.</li>
 <li>A realm transfer is not included in a race change.</li>
 <li>A character can only change races once every 3 days.</li>
-<li>Please refer to the <a href="http://us.blizzard.com/support/article.xml?locale=en_US&amp;tag=RCFAQ" target="_blank">Character Race Change FAQ</a> for answers to common questions about this service.</li>
+<li>Please refer to the <a href="" target="_blank">Character Race Change FAQ</a> for answers to common questions about this service.</li>
 </ul>
 </div>
 <span class="clear"><!-- --></span>
-<form method="POST" action="prc-tos.html?l=PAP123&amp;r=EU&amp;sr=619&amp;c=32353974">
+<form method="POST" action="">
 <fieldset class="ui-controls section-stacked" >
 <button
 class="ui-button button1 "
@@ -130,7 +130,7 @@ tabindex="1"
 </span>
 </button>
 <a class="ui-cancel "
-href="wow/static/management/wow/services/prc-select.html?l=PAP123&amp;r=EU&amp;sr=619&amp;c=32353974"
+href=""
 tabindex="1">
 <span>
 Back </span>

@@ -56,14 +56,14 @@ _gaq.push(['_trackPageview']);
 <li><a href="../index.php" rel="np"><?php echo $website['title']; ?></a></li>
 <li><a href="../game.php" rel="np">Game</a></li>
 <li><a href="status.php" rel="np">Realm Status</a></li>
-<li class="last"><a href="hellscream.php" rel="np">Hellscream</a></li>
+<li class="last"><a href="$name_realm1.php" rel="np">$name_realm1</a></li>
 </ol>
 </div>
 <div class="content-bot">
 	<div class="content-header">
-				<h2 class="header ">Azuremyst Status</h2>
+				<h2 class="header ">$name_realm2 Status</h2>
 
-		<div class="desc">This page lists all available World of Failure Players inside the Azuremyst Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
+		<div class="desc">This page lists all available World of Failure Players inside the $name_realm2 Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
 <span class="clear"><!-- --></span>
 	</div>
 
