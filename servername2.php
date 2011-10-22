@@ -238,43 +238,43 @@ while($raw = mysql_fetch_array($sql)){
 $cclass = $raw['class'];
 if ($cclass == 1)
 {
-$class = "<img src='wow/static/images/classwarrior.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/1.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 2)
 {
-$class = "<img src='wow/static/images/classpaladin.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/2.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 3)
 {
-$class = "<img src='wow/static/images/classhunter.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/3.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 4)
 {
-$class = "<img src='wow/static/images/classrogue.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/4.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 5)
 {
-$class = "<img src='wow/static/images/classpriest.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/5.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 6)
 {
-$class = "<img src='wow/static/images/classdk.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/6.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 7)
 {
-$class = "<img src='wow/static/images/classshaman.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/7.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 8)
 {
-$class = "<img src='wow/static/images/classmage.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/8.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 9)
 {
-$class = "<img src='wow/static/images/classwarlock.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/9.gif' width='18' height='18'/>";
 }
 elseif ($cclass == 11)
 {
-$class = "<img src='wow/static/images/classdruid.gif' width='18' height='18'/>";
+$class = "<img src='wow/static/images/icons/class/10.gif' width='18' height='18'/>";
 }
 //Character Race
 $rrace = $raw['race'];
@@ -358,16 +358,16 @@ $location = "<b>Northrend</b>";
 // (Ally or Horde) Check
 if($rrace == 2 || $rrace == 5 || $rrace == 6 || $rrace == 8 || $rrace == 10)
 {
-$bg = "<img src='wow/static/images/ally.gif' width='18' height='18'/>";
+$bg = "<img src='wow/static/images/icons/faction/ally.gif' width='18' height='18'/>";
 }
 elseif($rrace == 1 || $rrace == 3 || $rrace == 4 || $rrace == 7 || $rrace == 11)
 {
-$bg = "<img src='wow/static/images/horde.gif' width='18' height='18'/>";
+$bg = "<img src='wow/static/images/icons/faction/horde.gif' width='18' height='18'/>";
 }
 echo '
 <tr>
 <td style="background-color: '.$bg.';"><b><center>'.$raw['name'].'</center></b></td>
-<td style="background-color: '.$bg.';"><center><img src="Status/race/'.$raw[race].'-'.$raw[gender].'.gif" title="'.$race.' '.$gender.'"/></center></td>
+<td style="background-color: '.$bg.';"><center><img src="wow/static/images/icons/race/'.$raw[race].'-'.$raw[gender].'.gif" title="'.$race.' '.$gender.'"/></center></td>
 <td style="background-color: '.$bg.';"><center>'.$class.'</center></td>
 <td style="background-color: '.$bg.';"><center>'.$raw['level'].'</center></td>
 <td style="background-color: '.$bg.';"><center>'.$location.'</center></td>
@@ -378,7 +378,7 @@ echo"</table><br />";
 }
 else
 {
-echo "<b>There are now players connected right now on AzuremystServer! This server is instant 85.</b>";
+echo "<b>There are now players connected right now on.</b>";
 }
 ?>
 					
