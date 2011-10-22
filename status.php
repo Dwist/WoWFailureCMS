@@ -260,7 +260,7 @@ $total_number = $number * $bar_width;
 						</td>
 						<td class="name">
 							<a href="servername2.php"><?php 	require_once("configs.php");
-									echo $name_realm1['realm']; 
+									echo $name_realm2['realm']; 
 									?></a>
 						</td>
 						<td class="type" data-raw="pve">

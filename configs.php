@@ -15,7 +15,7 @@ $server_wdb = "world"; //Your world database
 $server_wdb_2 = "world"; //Your world database
 $charTable = 'characters'; //Your Character Table!!
 $name_realm1['realm'] = "Server_Name"; //Your Realm Name 1
-$name_realm1['realm'] = "Server_Name_2"; //Your Realm Name 2
+$name_realm2['realm'] = "Server_Name_2"; //Your Realm Name 2
 $charLimit = '10'; //Max characters to show on the page
 
 $website['title'] = "WoWFailureCMS";
