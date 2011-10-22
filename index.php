@@ -294,7 +294,7 @@ $page_cat = "home";
 						$ally_img = "wow/static/images/services/status/ally.png";
 						$horde_img = "wow/static/images/services/status/horde.png";
 						//Show percent online (true = yes, false = no)
-						$show_percent = true; 
+						$show_percent = false; 
 
 						$alliance = array("1","3","4","7","11");
 						$horde = array("2","5","6","8","10");
