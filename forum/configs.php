@@ -1,26 +1,20 @@
 <?php
-session_save_path('../phpsessions');
-$sessionid = session_id();
-if($sessionid == ""){
-  session_start();
-}
+session_save_path('phpsessions');
+session_start();
 
-$sessionid = session_id();
-if ($sessionid == '') session_start();
-if (!isset($_SESSION['safety'])){
-    session_regenerate_id(true);
-    $_SESSION['safety'] = true;
-}
-$_SESSION['sessionid'] = session_id();
-
-$serveraddress = "localhost"; // Your mysql server address
-$serveruser = "root"; // Your mysql user
-$serverpass = "ascent"; //Your mysql password
+$serveraddress = "localhost"; // Your MySQL server address
+$serveruser = "root"; // Your MySQL user
+$serverpass = "ascent"; //Your MySQL password
+$serverport	= "3306"; // Your MySQL Port
 
 $server_db = "site"; //Your website database
 $server_adb = "auth"; //Your account database
 $server_cdb = "characters"; //Your characters database
+$server_cdb_2 = "characters2"; //Your characters database
 $server_wdb = "world"; //Your world database
+$server_wdb_2 = "world"; //Your world database
+$charTable = 'characters'; //Your Character Table!!
+$charLimit = '10'; //Max characters to show on the page
 
 $website['title'] = "WoWFailureCMS";
 $website['address'] = "http://www.wowfailure.com"; // 'http://url/foldername/' or 'http://url/'
@@ -38,3 +32,5 @@ if(isset($_SESSION['username'])){
 	$account_information = mysql_fetch_assoc($lbrspa);
 	mysql_select_db($server_db,$connection_setup)or die(mysql_error());
 }
+?>
+<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
