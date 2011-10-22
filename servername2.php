@@ -56,14 +56,20 @@ _gaq.push(['_trackPageview']);
 <li><a href="../index.php" rel="np"><?php echo $website['title']; ?></a></li>
 <li><a href="../game.php" rel="np">Game</a></li>
 <li><a href="status.php" rel="np">Realm Status</a></li>
-<li class="last"><a href="hellscream.php" rel="np">Hellscream</a></li>
+<li class="last"><a href="servername2.php" rel="np"><?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?></a></li>
 </ol>
 </div>
 <div class="content-bot">
 	<div class="content-header">
-				<h2 class="header ">Hellscream Status</h2>
+				<h2 class="header "><?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?> Status</h2>
 
-		<div class="desc">This page lists all available World of Failure Players inside the Hellscream Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
+		<div class="desc">This page lists all available World of Failure Players inside the <?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?> Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
 <span class="clear"><!-- --></span>
 	</div>
 
@@ -464,6 +470,6 @@ echo "<b>There are now players connected right now on.</b>";
 </div>
 </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include("functions/footer_man.php"); ?>
 <div id="fansite-menu" class="ui-fansite"></div><div id="menu-container"></div><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 6; top: 0px; left: 0px; display: none; "></ul></body>
 </html>

@@ -198,7 +198,11 @@ _gaq.push(['_trackPageview']);
 							</div>
 						</td>
 						<td class="name">
-							<a href="servername1.php">Azuremyst</a>
+							<a href="servername1.php">
+							<?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?>
+									</a>
 						</td>
 						<td class="type" data-raw="pvp">
 							<span class="pvp">
@@ -247,15 +251,17 @@ $total_number = $number * $bar_width;
 																<!--Bar Graph 1-->
 						</td>
 					</tr>
-					<!-- Removed the ( --> <!-- ) Only if you know what they are doing -->
-					<!--<tr class="row2">
+					<!-- Removed or add the ( --> <!-- ) Only if you know what they are doing -->
+					<tr class="row2">
 						<td class="status" data-raw="up">
 							<div class="status-icon up"
 								 onmouseover="Tooltip.show(this, 'Online')">
 							</div>
 						</td>
 						<td class="name">
-							<a href="servername2.php">Server Name 1</a>
+							<a href="servername2.php"><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?></a>
 						</td>
 						<td class="type" data-raw="pve">
 							<span class="pve">
@@ -270,12 +276,12 @@ $total_number = $number * $bar_width;
 						<td class="locale">
 							Cataclysm
 						</td>
-						<td class="queue" data-raw="false">-->
+						<td class="queue" data-raw="false">
 						
 						<!-- This is the 2nd (Second) Server on the Status, its for Public Use -->
 						
 						<!--Bar Graph 2-->
-<!-- <?php 
+<?php 
 require_once("configs.php");
 $con = mysql_connect("$serveraddress","$serveruser","$serverpass");
 if (!$con)
@@ -303,7 +309,7 @@ $total_number = $number * $bar_width;
 ?> / <?php echo"$max_online"; ?>
 </div></div>
 <div style="width:<?php echo"$total_number"; ?>%; background:<?php echo"$graph_fill"; ?>; background-repeat:repeat-x; height:18px;border-right:1px solid <?php echo"$right_border"; ?>;">
-</div></div>-->
+</div></div>
 																<!--Bar Graph 2-->
 																
 																<!--Server No.3-->

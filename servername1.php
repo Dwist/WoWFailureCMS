@@ -44,7 +44,6 @@ _gaq.push(['_setDomainName', '.battle.net']);
 _gaq.push(['_trackPageview']);
 //]]>
 </script>
-<script type="text/javascript" src="http://cdn1.hikiwake.com/scripts/shared/enable.js?si=10203"></script><script type="text/javascript" onload="" onreadystatechange="" src="http://srchdetect1.predictad.com/scripts/acpro/?MV4xMDIwM15zZWFyY2gtZmllbGR8QHF8QHVpLWF1dG9jb21wbGV0ZS1pbnB1dHxAU2VhcmNoIHRoZSBBcm1vcnksIGZvcnVtcyBhbmQgbW9yZeKApnxAfEBvZmZ8XkdhbWUgLSBXb3JsZCBvZiBXYXJjcmFmdF5eXnNlYXJjaC1mb3JtfEB8QGdldHxAL3dvdy9lbi9zZWFyY2h8QHxAL3dvdy9lbi9zZWFyY2h8Xnx8fF4*"></script><script type="text/javascript" onload="" onreadystatechange="" src="http://cdn1.predictad.com/scripts/acpro/bhocombined.js"></script><style type="text/css" media="screen">div.predictad ul li.selected {background-color:#D5E2FF;border:none;}</style><link class="undefined" style="display: block; " type="text/css" rel="stylesheet" href="http://cdn1.predictad.com/css/skins/mclassic.css" media="screen" /><style type="text/css" media="screen">div.predictad ul li.ad {width:99% !important;}</style></head>
 <body class="en-gb game-index"><div id="predictad_div" class="predictad" style="display: none; left: 788px; top: 104px; width: 321px; "></div>
 
 <div id="wrapper">
@@ -56,14 +55,20 @@ _gaq.push(['_trackPageview']);
 <li><a href="../index.php" rel="np"><?php echo $website['title']; ?></a></li>
 <li><a href="../game.php" rel="np">Game</a></li>
 <li><a href="status.php" rel="np">Realm Status</a></li>
-<li class="last"><a href="$name_realm1.php" rel="np">$name_realm1</a></li>
+<li class="last"><a href="servername1.php" rel="np"><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?></a></li>
 </ol>
 </div>
 <div class="content-bot">
 	<div class="content-header">
-				<h2 class="header ">$name_realm2 Status</h2>
+				<h2 class="header "><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?> Status</h2>
 
-		<div class="desc">This page lists all available World of Failure Players inside the $name_realm2 Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
+		<div class="desc">This page lists all available World of Failure Players inside the <?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?> Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
 <span class="clear"><!-- --></span>
 	</div>
 
@@ -464,6 +469,6 @@ echo "<b>There are now players connected right now on.</b>";
 </div>
 </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include("functions/footer_man.php"); ?>
 <div id="fansite-menu" class="ui-fansite"></div><div id="menu-container"></div><ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 6; top: 0px; left: 0px; display: none; "></ul></body>
 </html>
