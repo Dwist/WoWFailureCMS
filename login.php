@@ -6,10 +6,10 @@ include("configs.php");
   <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="login/static/local-common/css/common.css?v15"/>
-    <link rel="stylesheet" type="text/css" href="login/static/_themes/bam/css/master.css?v1"/>
-    <script type="text/javascript" src="login/static/local-common/js/third-party/jquery-1.4.2.min.js?v15"></script>
-    <script type="text/javascript" src="login/static/local-common/js/core.js?v15"></script>
+    <link rel="stylesheet" type="text/css" href="wow/static/login/static/local-common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="wow/static/login/static/_themes/bam/css/master.css"/>
+    <script type="text/javascript" src="wow/static/login/static/local-common/js/third-party/jquery.js"></script>
+    <script type="text/javascript" src="wow/static/login/static/local-common/js/core.js"></script>
 
     <script>
       var targetOrigin = "<?php echo $website['address']; ?>";
@@ -108,7 +108,7 @@ include("configs.php");
 
         <input type="hidden" name="app" value="com-sc2"/>
 
-        <button class="ui-button button1" type="submit" data-text="Processing…">
+        <button class="ui-button button1" type="submit" data-text="Processing...">
           <span>
             <span>Log In</span>
           </span>

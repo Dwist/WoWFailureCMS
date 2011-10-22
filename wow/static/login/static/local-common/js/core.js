@@ -6,10 +6,10 @@
  */
 
 $(function() {
-	UserAgent.initialize();
 	Page.initialize();
 	Input.initialize();
 	Explore.initialize();
+	Tickets.initialize();
 	Flash.initialize();
 	Locale.initialize();
 	CharSelect.initialize();
@@ -22,6 +22,11 @@ var Core = {
 	 * Base context URL for the project.
 	 */
 	baseUrl: '/',
+
+	/**
+	 * Battle.net support site URL.
+	 */
+	supportUrl: '/support/',
 
 	/**
 	 * The cached string for the browser.
@@ -39,6 +44,16 @@ var Core = {
 	locale: 'en-us',
 
 	/**
+	 * Short date format
+	 */
+	shortDateFormat: 'MM/dd/Y',
+
+	/**
+	 * Date/time format
+	 */
+	dateTimeFormat: 'dd/MM/yyyy HH:mm',
+
+	/**
 	 * The current project.
 	 */
 	project: '',
@@ -47,6 +62,7 @@ var Core = {
 	 * Path to static content.
 	 */
 	staticUrl: '/',
+	sharedStaticUrl: '/local-common/',
 
 	/**
 	 * The current host and protocol.
@@ -81,24 +97,25 @@ var Core = {
 	 * @param width
 	 * @param height
 	 * @param parent
+	 * @param id
 	 */
-	appendFrame: function(url, width, height, parent) {
-		if (url === undefined)
+	appendFrame: function(url, width, height, parent, id) {
+		if (typeof url === 'undefined')
 			return;
 
-		if (width === undefined)
+		if (typeof width === 'undefined')
 			width = 1;
 
-		if (height === undefined)
+		if (typeof height === 'undefined')
 			height = 1;
 
-		if (parent === undefined)
+		if (typeof parent === 'undefined')
 			parent = $('body');
 
 		if (Core.isIE())
-			parent.append('<iframe src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" frameborder="0" allowTransparency="true"></iframe>');
+			parent.append('<iframe src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" frameborder="0" allowTransparency="true"'+ ((typeof id != 'undefined') ? ' id="'+ id +'"' : '') +'></iframe>');
 		else
-			parent.append('<object type="text/html" data="' + url + '" width="' + width + '" height="' + height + '"></object>');
+			parent.append('<object type="text/html" data="' + url + '" width="' + width + '" height="' + height + '"'+ ((typeof id != 'undefined') ? ' id="'+ id +'"' : '') +'></object>');
 	},
 
 	/**
@@ -121,7 +138,7 @@ var Core = {
 					height = linkHeight;
 			});
 
-			if (baseHeight > 18)
+			if (height > baseHeight)
 				table.find('.sort-link, .sort-tab').css('height', height);
 		});
 	},
@@ -173,6 +190,12 @@ var Core = {
 			// webkit
 			if (isNaN(localDate.getTime())) { // 2010-07-22 07:41 GMT-0700
 				datetime = datetime.substring(0,10) + ' ' + datetime.substring(11,16) + ':00 GMT' + datetime.substring(16,19) + datetime.substring(20,22);
+				localDate = new Date(datetime);
+			}
+
+			// safaria€¦ still thinking different
+			if (isNaN(localDate.getTime())) { // 2010/07/22 07:41 GMT-0700
+				datetime = datetime.substring(0,4) + '/' + datetime.substring(5,7) + '/' + datetime.substring(8,29);
 				localDate = new Date(datetime);
 			}
 
@@ -285,7 +308,9 @@ var Core = {
 	 */
 	goTo: function(url, base) {
 		window.location.href = (base ? Core.baseUrl : '') + url;
-		window.event.returnValue = false;
+
+		if (window.event)
+			window.event.returnValue = false;
 	},
 
 	/**
@@ -335,14 +360,18 @@ var Core = {
 	 *
 	 * @param path
 	 * @param deferred - true by default
+	 * @param callback
 	 */
-	load: function(path, deferred) {
+	load: function(path, deferred, callback) {
 		deferred = deferred !== false;
 
 		if (Page.loaded || !deferred)
 			Core.loadDeferred(path);
 		else
 			Core.deferredLoadQueue.push(path);
+
+		if (Core.isCallback(callback))
+			callback();
 	},
 
 	/**
@@ -451,6 +480,68 @@ var Core = {
 				Core.load(path);
 			}
 		}
+	},
+
+	/**
+	 * Scroll to a specific part of the page.
+	 *
+	 * @param target
+	 * @param duration
+	 * @param callback
+	 */
+	scrollTo: function(target, duration, callback) {
+
+		target = $(target);
+		if (target.length != 1)
+			return;
+
+		var win = $(window),
+			winTop = win.scrollTop(),
+			winBottom = winTop + win.height(),
+			top = target.offset().top;
+
+		top -= 15;
+
+		if (top >= winTop && top <= winBottom)
+			return;
+
+		$($.browser.webkit ? 'body' : 'html').animate({
+			scrollTop: top
+		},
+		duration || 350,
+		callback || null);
+	},
+
+	/**
+	 * Scroll to a specific part of the page (enough to make sure it's fully visible).
+	 *
+	 * @param target
+	 * @param duration
+	 * @param callback
+	 */
+	scrollToVisible: function(target, duration, callback) {
+
+		target = $(target);
+		if (target.length != 1)
+			return;
+
+		var win = $(window),
+			winTop = win.scrollTop(),
+			winBottom = winTop + win.height(),
+			top = target.offset().top
+			bottom = top + target.height();
+
+		top -= 15;
+		bottom += 15;
+
+		if (top >= winTop && bottom <= winBottom)
+			return;
+
+		$($.browser.webkit ? 'body' : 'html').animate({
+			scrollTop: (top < winTop ? top : bottom - win.height())
+		},
+		duration || 350,
+		callback || null);
 	},
 
 	/**
@@ -781,11 +872,7 @@ var Input = {
 	 * Initialize binds for search form.
 	 */
 	initialize: function() {
-		$('#search-form')
-			.attr('autocomplete', 'off')
-			.submit(function() {
-				return Input.submit('#search-field');
-			});
+		$('#search-form, #search-page-field').attr('autocomplete', 'off');
 
 		// Ensure alt text is displayed after empty search is submitted.
 		Input.bind('#search-field');
@@ -799,12 +886,17 @@ var Input = {
 	bind: function(target) {
 		Input.reset(target);
 
-		$(target)
+		var field = $(target);
+
+		field
 			.focus(function() {
 				Input.activate(this);
 			})
 			.blur(function() {
 				Input.reset(this);
+			})
+			.parentsUntil('form').parent().submit(function() {
+				return Input.submit(field);
 			});
 	},
 
@@ -846,11 +938,6 @@ var Input = {
 
 		if (node.val() == node.attr('alt'))
 			node.val("");
-
-		if (node.val().length < 2){
-			Overlay.open(Msg.cms.shortQuery)
-			return false;
-		}
 
 		return true;
 	}
@@ -946,8 +1033,17 @@ var Explore = {
 				.css('cursor', 'pointer');
 		}
 
+		var supportLink = $('#support-link');
 		var exploreLink = $('#explore-link');
 		var newsLink = $('#breaking-link');
+
+		if (supportLink.length > 0) {
+			supportLink.unbind().click(function() {
+				Tickets.loadStatus();
+				Toggle.open(this, 'active', '#support-menu');
+				return false;
+			});
+		}
 
 		if (exploreLink.length > 0) {
 			exploreLink.unbind().click(function() {
@@ -965,7 +1061,226 @@ var Explore = {
 	}
 };
 
-/*
+/**
+ * Gets and displays unread support tickets.
+ */
+var Tickets = {
+
+	/**
+	 * HTML elements.
+	 */
+	tag: null,
+	summary: null,
+	fragment: null,
+	ul: null,
+	doc: null,
+
+	/**
+	 * Total number of ticket statuses to show.
+	 */
+	 total: 3,
+
+	/**
+	 * Enable the enahanced support menu.
+	 *
+	 * @constructor
+	 */
+	initialize: function() {
+	    Tickets.doc = document;
+	    var doc = Tickets.doc;
+		Tickets.tag = doc.getElementById('support-ticket-count');
+		Tickets.summary = doc.getElementById('ticket-summary');
+		Tickets.fragment = doc.createDocumentFragment();
+		Tickets.ul = doc.createElement('ul');
+		Tickets.loadStatus();
+	},
+
+	/**
+	 * Update the service menu.
+	 *
+	 * @param json
+	 */
+	updateSummary: function(json) {
+
+		var doc = Tickets.doc;
+
+		Tickets.fragment = doc.createDocumentFragment();
+		Tickets.ul = doc.createElement('ul');
+		Tickets.summary.innerHTML = '';
+		Tickets.fragment.appendChild(Tickets.ul);
+
+		if (json.length < 1) {
+			return;
+        }
+
+		for (var i = 0, ticket; ticket = json[i]; i++) {
+		    Tickets.createListItem(ticket, i);
+		}
+
+		Tickets.summary.appendChild(Tickets.fragment);
+
+	},
+
+	/**
+	 * Creates a status summary for a ticket.
+	 *
+	 * @param ticket A ticket object.
+	 * @param index
+	 */
+	createListItem: function(ticket, index) {
+
+        if (typeof ticket !== 'object') {
+            return;
+        }
+
+		var doc = Tickets.doc,
+		    css = Core.isIE(6) || Core.isIE(7) ? 'className' : 'class',
+		    msgSupport = Msg.support,
+		    msg = {
+				created: msgSupport.ticketNew,
+				status: msgSupport.ticketStatus,
+				viewAll: msgSupport.ticketAll,
+				OPEN: msgSupport.ticketOpen,
+				ANSWERED: msgSupport.ticketAnswered,
+				RESOLVED: msgSupport.ticketResolved,
+				CANCELED: msgSupport.ticketCanceled,
+				ARCHIVED: msgSupport.ticketArchived,
+				INFO: msgSupport.ticketInfo
+			},
+			string = '',
+			prefix = '',
+			suffix = '',
+			icon = null,
+			li = null,
+			a = null,
+			span = null,
+			br = null,
+			datetime = null,
+			test = -1;
+
+        if (ticket.status === 'OPEN') {
+            string = msg.created.replace('{0}', Core.buildRegion.toUpperCase() + ticket.caseId);
+        } else {
+            string = msg.status.replace('{0}', Core.buildRegion.toUpperCase() + ticket.caseId);
+        }
+        datetime = doc.createElement('span');
+        datetime.setAttribute(css, 'ticket-datetime');
+        datetime.appendChild(doc.createTextNode(Tickets.localizeDatetime(ticket.lastUpdate)));
+        a = doc.createElement('a');
+        a.href = Core.secureSupportUrl + 'ticket/thread/' + ticket.caseId;
+        icon = doc.createElement('span'),
+        icon.setAttribute(css, 'icon-ticket-status');
+        a.appendChild(icon);
+        test = string.indexOf('{1}');
+        if (test > 0) {
+            prefix = string.substring(0, test);
+            suffix = string.substr(test + 3, string.length);
+            span = doc.createElement('span');
+            span.setAttribute(css, 'ticket-' + ticket.status.toLowerCase());
+            span.appendChild(doc.createTextNode(msg[ticket.status]));
+            a.appendChild(doc.createTextNode(prefix));
+            a.appendChild(span);
+            a.appendChild(doc.createTextNode(suffix));
+        } else {
+            a.appendChild(doc.createTextNode(string));
+        }
+        br = doc.createElement('br');
+        a.appendChild(br);
+        a.appendChild(datetime);
+        li = doc.createElement('li');
+        if (index === 0) {
+            li.setAttribute(css, 'first-ticket');
+        }
+        li.appendChild(a);
+        Tickets.ul.appendChild(li);
+
+		if (index === this.total) {
+		    li = doc.createElement('li');
+		    li.setAttribute(css, 'view-all-tickets');
+		    a = doc.createElement('a');
+		    a.href = Core.secureSupportUrl + 'ticket/status';
+            a.appendChild(doc.createTextNode(msg['viewAll']));
+		    li.appendChild(a);
+			Tickets.ul.appendChild(li);
+		}
+
+    },
+
+	/**
+	 * Update the service menu tag with the total number of tickets.
+	 *
+	 * @param count
+	 */
+	updateTotal: function(count) {
+
+		count = typeof count === 'number' ? count : 0;
+
+		var css = Core.isIE(6) || Core.isIE(7) ? 'className' : 'class';
+
+		if (count > 0) {
+			Tickets.tag.setAttribute(css, 'open-support-tickets');
+			Tickets.tag.innerHTML = count;
+		} else {
+			Tickets.tag.setAttribute(css, 'no-support-tickets');
+			Tickets.tag.innerHTML = '';
+		}
+
+	},
+
+	/**
+	 * Localize the date and time per the user's time zone and locale.
+	 *
+	 * @param timestamp
+	 */
+	localizeDatetime: function(timestamp) {
+
+		var format = Core.dateTimeFormat,
+			locale = Core.locale,
+			datetime = null;
+
+		datetime = Core.formatDatetime(format, timestamp);
+
+		if (!datetime)
+			return '';
+
+		if (locale === 'en-us' || locale === 'es-mx' || locale === 'zh-cn' || locale === 'zh-tw') {
+			datetime = datetime.replace('/0', '/');
+
+			if (datetime.substr(0, 1) === '0')
+				datetime = datetime.substr(1);
+		}
+
+		if (locale === 'en-us' || locale === 'es-mx')
+			datetime = datetime.replace(' 0', ' ');
+
+		return datetime;
+
+	},
+
+	/**
+	 * Load the ticket information through AJAX.
+	 */
+	loadStatus: function() {
+        var supportUrl = Core.secureSupportUrl + 'update/json';
+
+        if (Tickets.summary !== null) {
+            $.ajax({
+                timeout: 3000,
+                url: supportUrl,
+                ifModified: true,
+                global: false,
+                dataType: 'jsonp',
+                jsonpCallback: 'getStatus',
+                success: function(json) {
+                    Tickets.updateTotal(json.total);
+                    Tickets.updateSummary(json.details, json.total);
+                }
+            });
+        }
+	}
+};
+
+/**
  * Simple open/hide toggle system.
  */
 var Toggle = {
@@ -1006,6 +1321,11 @@ var Toggle = {
 		Toggle.keepOpen = true;
 
 		var key = Toggle.key(targetPath);
+
+		for (var k in Toggle.cache) {
+			if (k !== key)
+				Toggle.close(Toggle.cache[k].trigger, Toggle.cache[k].activeClass, Toggle.cache[k].target, 0, true);
+		}
 
 		//bind events and cache
 		if (!Toggle.cache[key]) {
@@ -1055,14 +1375,18 @@ var Toggle = {
 	 * @param activeClass
 	 * @param targetPath
 	 * @param delay
+	 * @param force
 	 */
-	close: function(triggerNode, activeClass, targetPath, delay) {
+	close: function(triggerNode, activeClass, targetPath, delay, force) {
+
+		force = typeof force === 'boolean' ? force : false;
+
 		var key = Toggle.key(targetPath);
 
 		window.clearTimeout(Toggle.cache[key].timer);
 
 		Toggle.cache[key].timer = setTimeout(function() {
-			if (Toggle.keepOpen)
+			if (Toggle.keepOpen && !force)
 				return;
 
 			$(targetPath).hide();
@@ -1200,7 +1524,7 @@ var CharSelect = {
 			url: switchUrl,
 			data: {
 				index: index,
-				xstoken: xsToken
+				xstoken: Cookie.read('xstoken')
 			},
 			global: false,
 			success: function(content) {
@@ -1267,8 +1591,8 @@ var CharSelect = {
 	 * @param fallbackUrl
 	 */
 	pageUpdate: function(refreshUrl, fallbackUrl) {
-		var ck = Date.parse(new Date()),
 			refreshUrl = refreshUrl || location.href;
+		var ck = Date.parse(new Date());
 
 		if (Core.isIE() && refreshUrl == Core.baseUrl +'/') {
 			location.href = location.pathname +'?reload='+ ck;
@@ -1458,7 +1782,12 @@ var Flash = {
     /**
      * Express install location
      */
-    expressInstall: '/common/static/flash/expressInstall.swf',
+    expressInstall: 'expressInstall.swf',
+
+    /**
+     * Required version for Flash player
+     */
+    requiredVersion: '10.2.154',
 
     /**
      * Store values populated after load
@@ -1466,7 +1795,9 @@ var Flash = {
     initialize: function() {
          //set flash base and rating image
          Flash.defaultVideoParams.base          = Flash.videoBase;
-         Flash.defaultVideoFlashVars.ratingpath = Flash.ratingImage;
+         Flash.defaultVideoFlashVars.ratingPath = Flash.ratingImage;
+         Flash.defaultVideoFlashVars.locale     = Core.locale;
+         Flash.defaultVideoFlashVars.dateFormat = Core.shortDateFormat;
     },
 
     /**
@@ -1484,8 +1815,9 @@ var Flash = {
      * Default flash vars for videos
      */
     defaultVideoFlashVars: {
-        ratingfadetime: "2",
-        ratingshowtime: "1"
+        ratingFadeTime: "2",
+        ratingShowTime: "1",
+        autoPlay:       true
     }
 };
 
@@ -1519,9 +1851,8 @@ var Locale = {
      *
      * @param toggler
      * @param path
-     * @param contextPath
      */
-    openMenu: function(toggler, path, contextPath) {
+    openMenu: function(toggler, path) {
         var node = $('#international');
         toggler = $(toggler);
         path = path || '';
@@ -1538,7 +1869,7 @@ var Locale = {
                 $.ajax({
                     url: Core.baseUrl +'/'+ Locale.dataPath +'?path='+ path,
                     dataType: 'html',
-                    success: function(data, status) {
+                    success: function(data) {
                         if (data) {
                             node.replaceWith(data);
                             toggler.toggleClass('open');
@@ -1803,9 +2134,9 @@ var KeyCode = {
 	 * @return mixed
 	 */
 	get: function(type, lang) {
+	    lang = lang || Core.getLanguage();
 		var map = [],
-			types = [],
-			lang = lang || Core.getLanguage();
+			types = [];
 
 		if (typeof type == 'string')
 			types = [type];
@@ -1900,9 +2231,11 @@ var BnetAds = {
 			},
 			dataType: 'html',
 			success: function(data) {
-				var dataBody = data.substring(data.indexOf('<body>'), data.indexOf('</body>')+7);
+				if (data !== "") {
+					var dataBody = data.substring(data.indexOf('<body>'), data.indexOf('</body>')+7);
 
-				$(target).find('.sidebar-content').html($(dataBody).html()).removeClass('loading');
+					$(target).find('.sidebar-content').html($(dataBody).html()).removeClass('loading');
+				}
 			},
 			error: function() {
 				$(target).remove();
@@ -1912,17 +2245,63 @@ var BnetAds = {
 		});
 	},
 
-	trackEvent: function (id,title,ref,clickEvent){
-		if (typeof _gaq != "undefined") {
-			ref = (ref)?ref+' - ':'';
-			var pushEvent = [
+	/**
+	 * Bind ad tracking.
+	 *
+	 * @param query
+	 * @param category
+	 * @param action
+	 */
+	bindTracking: function(query, category, action) {
+		$(query).click(function() {
+			try {
+				_gaq.push([
+					'_trackEvent',
+					category,
+					action,
+					$(this).data('ad') +' ['+ Core.locale +']'
+				]);
+			} catch (e) {}
+		})
+	},
+
+	/**
+	 * Track a page impression / view.
+	 *
+	 * @param category
+	 * @param action
+	 * @param label
+	 */
+	trackImpression: function(category, action, label) {
+		try {
+			_gaq.push([
+				'_trackEvent',
+				category,
+				action,
+				label +' ['+ Core.locale +']'
+			]);
+		} catch (e) {}
+	},
+
+	/**
+	 * Track a loaded battle.net ad.
+	 *
+	 * @param id
+	 * @param title
+	 * @param ref
+	 * @param clickEvent
+	 */
+	trackEvent: function(id, title, ref, clickEvent) {
+		try {
+			ref = (ref) ? ref +' - ' : '';
+
+			_gaq.push([
 				'_trackEvent',
 				'Battle.net Ad Service',
-				(clickEvent)?'Ad Click-Throughs':'Ad Impressions',
-				'Ad '+ id +' - '+ encodeURIComponent(title.replace(' ','_')) +' - '+ ref + Core.locale
-			]
-			_gaq.push(pushEvent);
-		}
+				(clickEvent) ? 'Ad Click-Throughs' : 'Ad Impressions',
+				'Ad '+ encodeURIComponent(title.replace(' ', '_')) +' - '+ ref + Core.locale +' - '+ id
+			]);
+		} catch (e) {}
 	}
 };
 
@@ -2004,11 +2383,181 @@ var UserAgent = {
 };
 
 /**
+ * Simple API for interacting with the browsers local storage.
+ */
+var Storage = {
+
+	/**
+	 * Does browser support local storage?
+	 */
+	initialized: (window.localStorage),
+
+	/**
+	 * Get item from storage.
+	 *
+	 * @param key
+	 * @return mixed
+	 */
+	get: function(key) {
+		if (Storage.initialized && key)
+			return localStorage.getItem(key);
+
+		return null;
+	},
+
+	/**
+	 * Get all items from storage.
+	 *
+	 * @return mixed
+	 */
+	getAll: function() {
+		var items = [];
+
+		if (!Storage.initialized)
+			return items;
+
+		for (var i = 0, l = localStorage.length, k = null; i < l; i++) {
+			k = localStorage.key(i);
+
+			items.push({
+				key: k,
+				value: localStorage[k]
+			});
+		}
+
+		return items;
+	},
+
+	/**
+	 * Add/set an item into storage.
+	 *
+	 * @param key
+	 * @param value
+	 * @return mixed
+	 */
+	set: function(key, value) {
+		if (Storage.initialized && key) {
+			try {
+				localStorage.setItem(key, value || '');
+			} catch (e) {
+				if (e == QUOTA_EXCEEDED_ERR) {
+					alert('Local storage quota exceeded, please clear your saved data.');
+				}
+			}
+
+			return true;
+		}
+
+		return false;
+	},
+
+	/**
+	 * Clear all stored data.
+	 */
+	clear: function() {
+		if (Storage.initialized)
+			localStorage.clear();
+	},
+
+	/**
+	 * Remove a single item from storage.
+	 *
+	 * @param key
+	 */
+	remove: function(key) {
+		if (Storage.initialized && key)
+			localStorage.removeItem(key);
+	},
+
+	/**
+	 * Get the total items stored.
+	 *
+	 * @return int
+	 */
+	size: function() {
+		return localStorage.length || 0;
+	}
+
+};
+
+/**
+ * Load asynchronously.
+ */
+UserAgent.initialize();
+
+/**
  * Prototype overwrites.
  */
 String.prototype.trim = function() {
 	return $.trim(this);
 };
+
+/**
+ * Simple JavaScript Inheritance
+ * By John Resig http://ejohn.org/
+ * MIT Licensed.
+ */
+(function() {
+	var initializing = false,
+		fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
+
+	// The base Class implementation (does nothing)
+	this.Class = function() {};
+
+	// Create a new Class that inherits from this class
+	Class.extend = function(prop) {
+		var _super = this.prototype;
+
+		// Instantiate a base class (but only create the instance, don't run the init constructor)
+		initializing = true;
+		var prototype = new this();
+		initializing = false;
+
+		// Copy the properties over onto the new prototype
+		for (var name in prop) {
+			// Check if we're overwriting an existing function
+			prototype[name] =
+				(typeof prop[name] == "function" && typeof _super[name] == "function" && fnTest.test(prop[name]))
+			?
+				(function(name, fn) {
+					return function() {
+						var tmp = this._super;
+
+						// Add a new ._super() method that is the same method
+						// but on the super-class
+						this._super = _super[name];
+
+						// The method only need to be bound temporarily, so we
+						// remove it when we're done executing
+						var ret = fn.apply(this, arguments);
+						this._super = tmp;
+
+						return ret;
+					};
+				})(name, prop[name])
+			:
+				prop[name];
+		}
+
+		// The dummy class constructor
+		function Class() {
+			// All construction is actually done in the init method
+			if (!initializing && this.init)
+				this.init.apply(this, arguments);
+		}
+
+		// Populate our constructed prototype object
+		Class.prototype = prototype;
+
+		// Enforce the constructor to be what we expect
+		Class.constructor = Class;
+
+		// And make this class extendable
+		Class.extend = arguments.callee;
+
+		return Class;
+	};
+})();
 
 /**
  * Setup ajax calls.
