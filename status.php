@@ -229,7 +229,7 @@ if (!$con)
   mysql_select_db("$server_cdb", $con);
   
 $bar_width="100";
-$max_online="1000";
+$max_online="500";
 $border_color="#6cc02c";
 $graph_fill="#2fa4f3";
 $right_border="#6cc02c";
@@ -252,7 +252,7 @@ $total_number = $number * $bar_width;
 						</td>
 					</tr>
 					<!-- Removed or add the ( --> <!-- ) Only if you know what they are doing -->
-					<tr class="row2">
+					<!--<tr class="row2">
 						<td class="status" data-raw="up">
 							<div class="status-icon up"
 								 onmouseover="Tooltip.show(this, 'Online')">
@@ -276,12 +276,12 @@ $total_number = $number * $bar_width;
 						<td class="locale">
 							Cataclysm
 						</td>
-						<td class="queue" data-raw="false">
+						<td class="queue" data-raw="false">-->
 						
 						<!-- This is the 2nd (Second) Server on the Status, its for Public Use -->
 						
 						<!--Bar Graph 2-->
-<?php 
+<!--<?php 
 require_once("configs.php");
 $con = mysql_connect("$serveraddress","$serveruser","$serverpass");
 if (!$con)
@@ -309,7 +309,7 @@ $total_number = $number * $bar_width;
 ?> / <?php echo"$max_online"; ?>
 </div></div>
 <div style="width:<?php echo"$total_number"; ?>%; background:<?php echo"$graph_fill"; ?>; background-repeat:repeat-x; height:18px;border-right:1px solid <?php echo"$right_border"; ?>;">
-</div></div>
+</div></div>-->
 																<!--Bar Graph 2-->
 																
 																<!--Server No.3-->
