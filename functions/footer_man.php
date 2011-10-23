@@ -6,7 +6,7 @@
 <a href="#" tabindex="100">World of Warcraft</a>
 </h3>
 <ul>
-<li><a href="account_man.php">Account</a></li>
+<li><a href="account_log.php">Account</a></li>
 <li><a href="">Support</a></li>
 </ul>
 </div>
@@ -25,7 +25,7 @@
 </h3>
 <ul>
 <li><a href="#">Can't log in?</a></li>
-<li><a href="#">Create Account</a></li>
+<li><a href="register.php">Create Account</a></li>
 <li><a href="#">Account Summary</a></li>
 <li><a href="#">Account Security</a></li>
 </ul>
@@ -134,7 +134,8 @@
 			<span class="clear"><!-- --></span>
 </div>
 <br />
-<small>Copyright &copy; 2011 <?php echo $website['title']; ?>.<br />Powered by WoWFailureCMS<br />Resources are in Blizzard Entertainment Property.</small>
+<span class="clear"><!-- --></span>
+<small><center>Copyright &copy; 2011 <?php echo $website['title']; ?>.<br />Powered by WoWFailureCMS<br />Resources are in Blizzard Entertainment Property.</center></small>
 </div>
 <div id="international"></div>
 <div id="legal">

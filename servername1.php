@@ -330,7 +330,7 @@ if($ggender == 1)
 {
 $gender = "Female";
 }
-else
+elseif($ggender == 0)
 {
 $gender = "Male";
 }
@@ -360,12 +360,12 @@ elseif($map == 571)
 {
 $location = "<b>Northrend</b>";
 }
-// (Ally or Horde) Check
-if($rrace == 2 || $rrace == 5 || $rrace == 6 || $rrace == 8 || $rrace == 10)
+ // Alliance or Horde FLAG
+if($rrace == 2 || $rrace == 5 || $rrace == 6 || $rrace == 8 || $rrace == 9 || $rrace == 10)
 {
 $bg = "<img src='wow/static/images/icons/faction/ally.gif' width='18' height='18'/>";
 }
-elseif($rrace == 1 || $rrace == 3 || $rrace == 4 || $rrace == 7 || $rrace == 11)
+elseif($rrace == 1 || $rrace == 3 || $rrace == 4 || $rrace == 7 || $rrace == 11 || $rrace == 22)
 {
 $bg = "<img src='wow/static/images/icons/faction/horde.gif' width='18' height='18'/>";
 }
@@ -376,6 +376,7 @@ echo '
 <td style="background-color: '.$bg.';"><center>'.$class.'</center></td>
 <td style="background-color: '.$bg.';"><center>'.$raw['level'].'</center></td>
 <td style="background-color: '.$bg.';"><center>'.$location.'</center></td>
+<td style="background-color: '.$bg.';"><center>'.$bg.'</center></td>
 </tr>';
 }
 echo '</tr>';

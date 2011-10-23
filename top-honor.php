@@ -53,15 +53,27 @@ _gaq.push(['_trackPageview']);
 <ol class="ui-breadcrumb">
 <li><a href="../index.php" rel="np"><?php echo $website['title']; ?></a></li>
 <li><a href="../game.php" rel="np">Game</a></li>
-<li><a href="status.php" rel="np">Realm Status</a></li>
-<li class="last"><a href="hellscream.php" rel="np">Hellscream</a></li>
+<li><a href="status.php" rel="np">Top Honor</a></li>
+<li class="last"><a href="top-honor.php" rel="np"><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?> & <?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?> Status</a></li>
 </ol>
 </div>
 <div class="content-bot">
 	<div class="content-header">
-				<h2 class="header ">Azuremyst Status</h2>
+				<h2 class="header "><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?> & <?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?></h2>
 
-		<div class="desc">This page lists all available World of Failure Players inside the Azuremyst Realm as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
+		<div class="desc">This page lists all available <?php echo $website['title']; ?> Players inside the <?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?> & <?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?> Realms as well as the stats of each. The Character can be listed as either Horde or Alliance. Let us apologize in advance if you find any player that is not listed, it takes 5 seconds to refresh the list.</div>
 <span class="clear"><!-- --></span>
 	</div>
 
@@ -228,6 +240,9 @@ if($numrows > 0)
 					<th><a href="javascript:;" class="sort-link"><span class="arrow">Top Honor</span></a></th>
 					<th><a href="javascript:;" class="sort-link"><span class="arrow">Total Kills</span></a></th>
 					<th><a href="javascript:;" class="sort-link"><span class="arrow">Class</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow"><?php 	require_once("configs.php");
+									echo $name_realm1['realm']; 
+									?></span></a></th>
 					</tr>
 				</thead>
     <tbody>              
@@ -283,6 +298,15 @@ while($rows = mysql_fetch_object($result))
  {
  $class = "<img src='wow/static/images/icons/class/10.gif' width='18' height='18'/>";
  }
+ // Alliance or Horde FLAG
+if($rrace == 2 || $rrace == 5 || $rrace == 6 || $rrace == 8 || $rrace == 9 || $rrace == 10)
+{
+$bg = "<img src='wow/static/images/icons/faction/ally.gif' width='18' height='18'/>";
+}
+elseif($rrace == 1 || $rrace == 3 || $rrace == 4 || $rrace == 7 || $rrace == 11 || $rrace == 22)
+{
+$bg = "<img src='wow/static/images/icons/faction/horde.gif' width='18' height='18'/>";
+}
     echo " 
 	<tr>
  <td style=''><center>",$i,"</center></td>
@@ -291,6 +315,7 @@ while($rows = mysql_fetch_object($result))
  <td><center>",$Total_Honor,"</center></td>
  <td><center>",$Total_Kills,"</center></td>
  <td><center>",$class,"</center></td>
+ <td><center>",$bg,"</center></td>
   </tr>
   
   "; 
@@ -301,7 +326,116 @@ echo '</tr>';
 echo"</table><br/>";
 } 
 ?>
+<div id="all-realms">
+	<div class="table full-width">
+		<table>
+			<thead>
+				<tr>
+<?php
+$connect = mysql_connect($serveraddress, $serveruser, $serverpass, $serverport) or die(mysql_error()); 
+mysql_select_db($server_cdb,$connect) or die(mysql_error()); 
+$result = mysql_query("SELECT * FROM `characters` ORDER BY `totalKills` DESC LIMIT 0 , 100 ") or die(mysql_error());
+$numrows = mysql_num_rows($result);
+if($numrows > 0)
+?>
+<table border="1" width="100%" style="border: 1px solid #c0c0c0;border-collapse:collapse;" align="center">
+<div id="all-realms">
+	<div class="table full-width">
+		<table>
+			<thead>
+				<tr>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Number</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Name</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Level</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Top Honor</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Total Kills</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow">Class</span></a></th>
+					<th><a href="javascript:;" class="sort-link"><span class="arrow"><?php 	require_once("configs.php");
+									echo $name_realm2['realm']; 
+									?></span></a></th>
+					</tr>
+				</thead>
+    <tbody>              
+<?php
 
+while($rows = mysql_fetch_object($result))
+ 
+{ 
+ $i++; 
+ $name = $rows->name; 
+ $level = $rows->level;  
+ $Total_Kills = $rows->totalKills;
+ $Total_Honor = $rows->totalHonorPoints;
+ while($rows = mysql_fetch_array($result))
+ $cclass = $rows['class'];
+ if ($cclass == 1)
+ {
+ $class = "<img src='wow/static/images/icons/class/1.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 2)
+ {
+ $class = "<img src='wow/static/images/icons/class/2.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 3)
+ {
+ $class = "<img src='wow/static/images/icons/class/3.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 4)
+ {
+ $class = "<img src='wow/static/images/icons/class/4.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 5)
+ {
+ $class = "<img src='wow/static/images/icons/class/5.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 6)
+ {
+ $class = "<img src='wow/static/images/icons/class/6.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 7)
+ {
+ $class = "<img src='wow/static/images/icons/class/7.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 8)
+ {
+ $class = "<img src='wow/static/images/icons/class/8.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 9)
+ {
+ $class = "<img src='wow/static/images/icons/class/9.gif' width='18' height='18'/>";
+ }
+ elseif ($cclass == 11)
+ {
+ $class = "<img src='wow/static/images/icons/class/10.gif' width='18' height='18'/>";
+ }
+  // Alliance or Horde FLAG
+if($rrace == 2 || $rrace == 5 || $rrace == 6 || $rrace == 8 || $rrace == 9 || $rrace == 10)
+{
+$bg = "<img src='wow/static/images/icons/faction/ally.gif' width='18' height='18'/>";
+}
+elseif($rrace == 1 || $rrace == 3 || $rrace == 4 || $rrace == 7 || $rrace == 11 || $rrace == 22)
+{
+$bg = "<img src='wow/static/images/icons/faction/horde.gif' width='18' height='18'/>";
+}
+    echo " 
+	<tr>
+ <td style=''><center>",$i,"</center></td>
+ <td><center>",$name,"</center></td>
+ <td><center>",$level,"</center></td>
+ <td><center>",$Total_Honor,"</center></td>
+ <td><center>",$Total_Kills,"</center></td>
+ <td><center>",$class,"</center></td>
+ <td><center>",$bg,"</center></td>
+  </tr>
+  
+  "; 
+
+
+
+echo '</tr>';
+echo"</table><br/>";
+} 
+?>
 			<tbody>
 			
 					<tr class="row1">

@@ -229,7 +229,7 @@ if (!$con)
   mysql_select_db("$server_cdb", $con);
   
 $bar_width="100";
-$max_online="5000";
+$max_online="1000";
 $border_color="#6cc02c";
 $graph_fill="#2fa4f3";
 $right_border="#6cc02c";
